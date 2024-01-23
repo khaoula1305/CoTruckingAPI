@@ -1,0 +1,68 @@
+@Cotrucking.Api_HostAddress = https://localhost:7251/api
+
+GET {{Cotrucking.Api_HostAddress}}/Cities/
+Accept: application/json
+
+###
+
+POST {{Cotrucking.Api_HostAddress}}/Cities/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "label": "string",
+  "countryId": "c1c58a08-0510-4769-81be-08dc1c62b683"
+}
+###
+PUT {{Cotrucking.Api_HostAddress}}/Cities/8eef1b2a-e01b-45cb-0126-08dc1c62c40f
+Content-Type: application/json
+Accept: application/json
+
+{
+    "id": "8eef1b2a-e01b-45cb-0126-08dc1c62c40f",
+    "label": "string",
+    "countryId": "c1c58a08-0510-4769-81be-08dc1c62b683"
+}
+###
+
+DELETE {{Cotrucking.Api_HostAddress}}/Cities/c717d93a-ff2b-4576-c930-08dc1c59ece9
+Accept: application/json
+
+GET {{Cotrucking.Api_HostAddress}}/Countries/
+Accept: application/json
+
+###
+
+POST {{Cotrucking.Api_HostAddress}}/Countries/
+Content-Type: application/json
+Accept: application/json
+
+{
+    "label": "Maroc",
+    "countryCode": "MA"
+}
+
+###
+
+PUT {{Cotrucking.Api_HostAddress}}/Countries/8eef1b2a-e01b-45cb-0126-08dc1c62c40f
+Content-Type: application/json
+Accept: application/json
+
+{
+    "id": "8eef1b2a-e01b-45cb-0126-08dc1c62c40f",
+    "label": "MAROC",
+    "countryCode": "MA"
+}
+
+###
+
+DELETE {{Cotrucking.Api_HostAddress}}/Countries/c717d93a-ff2b-4576-c930-08dc1c59ece9
+Accept: application/json
+
+###
+GET {{Cotrucking.Api_HostAddress}}/Shipments/
+Accept: application/json
+
+###
+GET {{Cotrucking.Api_HostAddress}}/Transporters/
+Accept: application/json
