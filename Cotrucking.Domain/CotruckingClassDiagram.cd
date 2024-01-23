@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Cotrucking.Domain.Entities.BaseEntity">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAAAAAAAAAAAAAAAAAAgAAAAAAAgAAAAAAAAE=</HashCode>
+      <FileName>Entities\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.ApplicationDataModel">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ApplicationDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.CompanyDataModel">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAQAAAAAAAgAAAACIAAAAAAAAAAEACAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\CompanyDataModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Address" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Transporters" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.RequestDataModel">
+    <Position X="2" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAQEBBAAAAAQAAAAAAAAAAAAABAEAAAAAAgAEAA=</HashCode>
+      <FileName>Entities\RequestDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.RoleDataModel">
+    <Position X="17.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAABAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Entities\RoleDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.ShipmentDataModel">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAQAEBAACAAAIIAIAAAAAAAAAIBAAAAAAAAAAEAg=</HashCode>
+      <FileName>Entities\ShipmentDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.TransporterDataModel">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAIAAAAAAAABEAgAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Entities\Transporter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Company" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.UserDataModel" Collapsed="true">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAACAAAAAAESAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\UserDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.VehicleDataModel">
+    <Position X="8.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAEAAIAAAAAAAAAAAAAAAAAAAAAAAAABAACAAA=</HashCode>
+      <FileName>Entities\VehicleDataModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Company" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.AddressDataModel" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABgAAAAAAIIAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\AddressDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cotrucking.Domain.Entities.MapCompanyShipementDataModel" Collapsed="true">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAIAABAIAAIAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Entities\MapCompanyShipementDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
