@@ -9,7 +9,7 @@ namespace Cotrucking.Domain.Configuration
     {
         public MappingProfile() 
         {
-            #region
+            #region City
             CreateMap<CityDataModel, CityResponse>();
             CreateMap<CityDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
@@ -17,7 +17,7 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<CityInput, CityDataModel>();
             #endregion
 
-            #region
+            #region Country
             CreateMap<CountryDataModel, CountryResponse>();
             CreateMap<CountryDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
@@ -25,7 +25,7 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<CountryInput, CountryDataModel>();
             #endregion
 
-            #region
+            #region Transprter
             CreateMap<TransporterDataModel, TransporterResponse>();
             CreateMap<TransporterDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
@@ -33,12 +33,20 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<TransporterInput, TransporterDataModel>();
             #endregion
 
-            #region
+            #region Shipment
             CreateMap<ShipmentDataModel, ShipmentResponse>();
             CreateMap<ShipmentDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
                 .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Label));
             CreateMap<ShipmentInput, ShipmentDataModel>();
+            #endregion
+
+            #region Company
+            CreateMap<CompanyDataModel, CompanyResponse>();
+            CreateMap<CompanyDataModel, KeyValueModel>()
+                .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Name));
+            CreateMap<CompanyInput, CompanyDataModel>();
             #endregion
         }
     }

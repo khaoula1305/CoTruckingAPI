@@ -41,18 +41,18 @@ namespace Cotrucking.Api.Controllers
 
         [HttpPost]
         [Authorize(FunctionalityConstants.ADD, PageConstant.Shipment)]
-        public async Task<IActionResult> Create(ShipmentInput ShipmentDto)
+        public async Task<IActionResult> Create(ShipmentInput shipment)
         {
-            return Ok(await shipmentService.AddAsync(ShipmentDto));
+            return Ok(await shipmentService.AddAsync(shipment));
         }
 
         [HttpPut("{id}")]
         [Authorize(FunctionalityConstants.VIEW, PageConstant.Shipment)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Update(ShipmentInput ShipmentDto, Guid id)
+        public async Task<IActionResult> Update(ShipmentInput shipment, Guid id)
         {
-            return Ok(await shipmentService.Update(ShipmentDto, id));
+            return Ok(await shipmentService.Update(shipment, id));
 
         }
 

@@ -83,6 +83,7 @@ namespace Cotrucking.Api.Extensions
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<IShipmentRepository, ShipmentRepository >();
             services.AddScoped<ITransporterRepository, TransporterRepository >();
+            services.AddScoped<ICompanyRepository, CompanyRepository >();
             #endregion
 
             #region services
@@ -90,6 +91,7 @@ namespace Cotrucking.Api.Extensions
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IShipmentService, ShipmentService>();
             services.AddScoped<ITransporterService, TransporterService>();
+            services.AddScoped<ICompanyService, CompanyService>();
             #endregion
         }
     }

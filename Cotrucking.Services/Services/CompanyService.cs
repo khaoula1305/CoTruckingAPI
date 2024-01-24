@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Cotrucking.Domain.Entities;
+using Cotrucking.Domain.Models;
+using Cotrucking.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Http;
 
 namespace Cotrucking.Services.Services
 {
-    internal class CompanyService
+    public interface CompanyICompanyService: IGenericService<CompanyDataModel, CompanyResponse>
+    {
+    }
+
+    public  class CompanyService(ICompanyRepository companyRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor) 
+                : GenericService<CompanyDataModel, CompanyResponse>(companyRepository,mapper, httpContextAccessor), ICompanyService
     {
     }
 }
