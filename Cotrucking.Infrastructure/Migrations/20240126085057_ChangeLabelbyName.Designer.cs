@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cotrucking.Infrastructure.Migrations
 {
     [DbContext(typeof(CotruckingDbContext))]
-    [Migration("20240123211343_transprter-name")]
-    partial class Transprtername
+    [Migration("20240126085057_ChangeLabelbyName")]
+    partial class ChangeLabelbyName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,14 +80,14 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -105,9 +105,6 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Property<Guid>("AddressId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ContactInformation")
                         .HasColumnType("nvarchar(max)");
 
@@ -122,6 +119,9 @@ namespace Cotrucking.Infrastructure.Migrations
 
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RegistrationNumber")
                         .HasColumnType("nvarchar(max)");
@@ -148,14 +148,14 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -305,6 +305,64 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("PageFunctionalities");
+                });
+
+            modelBuilder.Entity("Cotrucking.Domain.Entities.ShipmentDataModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CargoDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateTimeOfShipment")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DestinationAddressId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
+
+                    b.Property<Guid?>("ModifiedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("OriginAddressId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("TransporterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("DestinationAddressId");
+
+                    b.HasIndex("OriginAddressId");
+
+                    b.HasIndex("TransporterId");
+
+                    b.ToTable("Shipments");
                 });
 
             modelBuilder.Entity("Cotrucking.Domain.Entities.TransporterDataModel", b =>
@@ -502,6 +560,35 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("Page");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Cotrucking.Domain.Entities.ShipmentDataModel", b =>
+                {
+                    b.HasOne("Cotrucking.Domain.Entities.CustomerDataModel", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("Cotrucking.Domain.Entities.AddressDataModel", "DestinationAddress")
+                        .WithMany()
+                        .HasForeignKey("DestinationAddressId");
+
+                    b.HasOne("Cotrucking.Domain.Entities.AddressDataModel", "OriginAddress")
+                        .WithMany()
+                        .HasForeignKey("OriginAddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cotrucking.Domain.Entities.TransporterDataModel", "Transporter")
+                        .WithMany()
+                        .HasForeignKey("TransporterId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("DestinationAddress");
+
+                    b.Navigation("OriginAddress");
+
+                    b.Navigation("Transporter");
                 });
 
             modelBuilder.Entity("Cotrucking.Domain.Entities.TransporterDataModel", b =>

@@ -2,7 +2,7 @@
 {
     public class CityDataModel : BaseEntity
     {
-        public string? Label { get; set; }
+        public string? Name { get; set; }
         public virtual CountryDataModel? Country { get; set; }
         public Guid CountryId { get; set; } 
     }

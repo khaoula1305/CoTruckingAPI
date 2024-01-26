@@ -16,6 +16,6 @@ namespace Cotrucking.Domain.Entities
         public ShipmentStatus Status { get; set; }
         public DateTime DateTimeOfShipment { get; set; }
         public TimeSpan Duration { get; set; }
-        public string? Label { get; set; }
+        public string? Name { get; set; }
     }
 }
