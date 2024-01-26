@@ -2,10 +2,13 @@
 {
     public class ShipmentResponse
     {
+        public string? Name { get; set; }
     }
 
     public class ShipmentInput
     {
+                public string? Name { get; set; }
+
     }
     
     public class ShipmentSearch

@@ -5,7 +5,7 @@
 namespace Cotrucking.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class transprtername : Migration
+    public partial class Transprtername : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

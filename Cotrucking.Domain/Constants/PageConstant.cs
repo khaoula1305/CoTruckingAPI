@@ -6,5 +6,6 @@
         public const string Shipment = "Shipment";
         public const string Country = "Country";
         public const string Transporter = "Transporter";
+        public const string Company = "Company";
     }
 }

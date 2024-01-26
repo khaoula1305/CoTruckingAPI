@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Cotrucking.Services.Services
 {
-    public interface CompanyICompanyService: IGenericService<CompanyDataModel, CompanyResponse>
+    public interface ICompanyService: IGenericService<CompanyDataModel, CompanyResponse>
     {
     }
 

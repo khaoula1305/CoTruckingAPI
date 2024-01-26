@@ -13,7 +13,7 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<CityDataModel, CityResponse>();
             CreateMap<CityDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
-                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Label));
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Name));
             CreateMap<CityInput, CityDataModel>();
             #endregion
 
@@ -21,7 +21,7 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<CountryDataModel, CountryResponse>();
             CreateMap<CountryDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
-                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Label));
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Name));
             CreateMap<CountryInput, CountryDataModel>();
             #endregion
 
@@ -37,7 +37,7 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<ShipmentDataModel, ShipmentResponse>();
             CreateMap<ShipmentDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
-                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Label));
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Name));
             CreateMap<ShipmentInput, ShipmentDataModel>();
             #endregion
 
