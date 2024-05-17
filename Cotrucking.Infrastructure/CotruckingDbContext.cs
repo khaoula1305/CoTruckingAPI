@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cotrucking.Infrastructure
 {
-    public class CotruckingDbContext : DbContext
+    public class CotruckingDbContext :  IdentityDbContext<UserDataModel, RoleDataModel, Guid>
     {
         public CotruckingDbContext(DbContextOptions<CotruckingDbContext> options) : base(options)
         {

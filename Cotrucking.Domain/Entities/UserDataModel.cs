@@ -1,6 +1,6 @@
 ﻿namespace Cotrucking.Domain.Entities;
 
-public class UserDataModel : BaseEntity
+public class UserDataModel : IdentityUser<Guid>
 {
     public string? Firstname { get; set; }
     public string? Lastname { get; set; }
