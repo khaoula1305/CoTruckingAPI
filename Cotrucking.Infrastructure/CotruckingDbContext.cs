@@ -1,5 +1,6 @@
 ﻿using Cotrucking.Domain.Entities;
 using Cotrucking.Domain.Entities.Security;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cotrucking.Infrastructure

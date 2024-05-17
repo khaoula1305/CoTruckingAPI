@@ -23,13 +23,13 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors(Constant.CorsName);
 app.MapHealthChecks(Constant.HealthEnpoint);
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.MapControllers();
 
-//app.UseHsts();
+app.UseHsts();
 
 app.Run();
