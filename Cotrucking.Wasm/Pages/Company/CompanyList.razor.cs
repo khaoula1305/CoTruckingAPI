@@ -1,5 +1,7 @@
 using Cotrucking.Wasm.Constant;
 using Microsoft.AspNetCore.Components;
+using Cotrucking.Wasm.Services;
+using Cotrucking.Wasm.Models;
 
 namespace Cotrucking.Wasm.Pages.Company
 {

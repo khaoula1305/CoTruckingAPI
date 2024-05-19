@@ -1,3 +1,4 @@
+namespace Cotrucking.Wasm.Models;
 public class CompanyModel
 {
     public Guid Id { get; set; }

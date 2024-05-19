@@ -1,5 +1,7 @@
 using Cotrucking.Wasm.Constant;
 using Microsoft.AspNetCore.Components;
+using Cotrucking.Wasm.Models;
+using Cotrucking.Wasm.Services;
 
 namespace Cotrucking.Wasm.Pages.Company
 {
@@ -7,6 +9,8 @@ namespace Cotrucking.Wasm.Pages.Company
     {
         [Inject]
         public ICompanyService _companyService { get; set; }
+        [Inject]
+        public NavigationManager _navigationManager { get; set; }
         [Parameter]
         public Guid? Id { get; set; }
 
@@ -25,6 +29,12 @@ namespace Cotrucking.Wasm.Pages.Company
                 company = await _companyService.GetCompanyById(Endpoints.Companies, Id ?? Guid.Empty);
                 StateHasChanged();
             }
+        }
+
+        public void HandleValidSubmitAsync()
+        {
+            _navigationManager.NavigateTo("/company");
+
         }
     }
 }

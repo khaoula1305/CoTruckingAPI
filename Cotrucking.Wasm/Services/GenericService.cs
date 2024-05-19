@@ -1,6 +1,6 @@
 using System.Net;
 using Newtonsoft.Json;
-
+namespace Cotrucking.Wasm.Services;
 public interface IGenericService<T> where T : new()
 {
     Task<IEnumerable<T>> GetAllAsync(string url);

@@ -1,3 +1,5 @@
+using Cotrucking.Wasm.Models;
+namespace Cotrucking.Wasm.Services;
 
 public interface ICompanyService : IGenericService<CompanyModel>
 {
