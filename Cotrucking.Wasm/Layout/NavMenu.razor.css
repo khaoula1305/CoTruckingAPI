@@ -1,0 +1,13 @@
+ .dropdown-menu-flag {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+.dropdown-menu-flag li a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        } 
+        .dropdown-menu-flag li a img {
+            margin-right: 10px;
+        }
+        

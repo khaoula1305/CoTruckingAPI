@@ -48,6 +48,14 @@ namespace Cotrucking.Domain.Configuration
                 .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Name));
             CreateMap<CompanyInput, CompanyDataModel>();
             #endregion
+
+            #region Address
+            CreateMap<AddressDataModel, AddressResponse>();
+            CreateMap<AddressDataModel, KeyValueModel>()
+                .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Address));
+            CreateMap<AddressInput, AddressDataModel>();
+            #endregion
         }
     }
 }

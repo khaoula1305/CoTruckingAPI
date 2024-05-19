@@ -1,0 +1,9 @@
+﻿@page "/company"
+@inherits CompanyListBase
+
+<h3>CompanyList</h3>
+@foreach(var company in companies)
+{
+    <a href="/Company/@company.Id"> the company @company.Name </a>
+}
+
