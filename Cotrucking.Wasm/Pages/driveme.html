@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driiveme</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #0d1a2b;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+      .container {
+        width: 80%;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+      }
+      .header img {
+        height: 40px;
+      }
+      .header nav a {
+        margin-left: 20px;
+        color: #fff;
+        text-decoration: none;
+      }
+      .main {
+        margin-top: 50px;
+      }
+      .main h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      .main .cta {
+        margin: 20px 0;
+      }
+      .main .cta button {
+        background-color: #feca57;
+        color: #0d1a2b;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .rating {
+        margin: 30px 0;
+      }
+      .rating span {
+        color: #feca57;
+        font-size: 1.5em;
+      }
+      .trusted-companies {
+        margin-top: 40px;
+      }
+      .footer {
+        background-color: #1b2c42;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      .footer button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <img src="path-to-logo.png" alt="Driiveme Logo" />
+        </div>
+        <nav>
+          <a href="#">Our services</a>
+          <a href="#">Log in</a>
+        </nav>
+      </header>
+      <main class="main">
+        <h1>The easiest way to move a vehicle</h1>
+        <div class="cta">
+          <button>A vehicle to move?</button>
+          <button>Become a driver</button>
+          <button>Rental for £1</button>
+        </div>
+        <div class="order-form">
+          <input type="text" placeholder="Collection address" />
+          <input type="text" placeholder="Delivery address" />
+          <button>See prices</button>
+        </div>
+        <div class="rating">
+          <span>⭐⭐⭐⭐⭐</span>
+          <p>4.8 / 5</p>
+          <p>Calculated from 1687 user scores</p>
+        </div>
+        <div class="trusted-companies">
+          <p>More than 4,000 companies trust us</p>
+          <!-- Add company logos here -->
+        </div>
+      </main>
+      <footer class="footer">
+        <button>I refuse</button>
+        <button>I accept</button>
+      </footer>
+    </div>
+  </body>
+</html>

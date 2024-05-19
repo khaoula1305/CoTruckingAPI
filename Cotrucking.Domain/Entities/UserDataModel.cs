@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-
+﻿
 namespace Cotrucking.Domain.Entities;
 
-public class UserDataModel : IdentityUser<Guid>
+public class UserDataModel : BaseEntity
 {
     public string? Firstname { get; set; }
     public string? Lastname { get; set; }

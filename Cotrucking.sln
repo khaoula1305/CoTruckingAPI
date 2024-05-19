@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cotrucking.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cotrucking.Services", "Cotrucking.Services\Cotrucking.Services.csproj", "{423DF35D-CA46-40F4-8800-3542AADC5B7A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cotrucking.Wasm", "Cotrucking.Wasm\Cotrucking.Wasm.csproj", "{123DF35D-CA46-40F4-8800-3542AADC5B7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{423DF35D-CA46-40F4-8800-3542AADC5B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{423DF35D-CA46-40F4-8800-3542AADC5B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{423DF35D-CA46-40F4-8800-3542AADC5B7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{123DF35D-CA46-40F4-8800-3542AADC5B7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{123DF35D-CA46-40F4-8800-3542AADC5B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{123DF35D-CA46-40F4-8800-3542AADC5B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{123DF35D-CA46-40F4-8800-3542AADC5B7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

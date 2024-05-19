@@ -14,6 +14,7 @@
         public string? Name { get; set; }
         public string? ContactInformation { get; set; }
         public string? RegistrationNumber { get; set; }
+        public Guid AddressId { get; set; }
     }
 
     public class CompanySearch

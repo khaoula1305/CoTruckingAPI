@@ -2,7 +2,7 @@
 
 namespace Cotrucking.Domain.Entities
 {
-    public class RoleDataModel : IdentityRole<Guid>
+    public class RoleDataModel : BaseEntity
     {
         public string? RoleName { get; set; }
         public virtual ICollection<UserDataModel> Users { get; set; } = [];
