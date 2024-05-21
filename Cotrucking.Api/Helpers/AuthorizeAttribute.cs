@@ -17,48 +17,39 @@ public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     }
 
     public void OnAuthorization(AuthorizationFilterContext context)
-    {       
-        //var token = context.HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-
-        //if (token == null)
-        //{
-        //    context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
-        //    return;
-        //}
-
-       
-        //if (!string.IsNullOrEmpty(token))
-        //{
-
-        //    var identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
-
-        //    var expiry = identity.Claims.FirstOrDefault(claim => claim.Type.Equals(ClaimTypes.exp.ToString()));
+    {
+        // var token = context.HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+        // if (string.IsNullOrEmpty(token))
+        // {
+        //     context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
+        //     return;
+        // }
+        // var identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
+        // var expiry = identity.Claims.FirstOrDefault(claim => claim.Type.Equals(ClaimTypes.Expired.ToString()));
 
 
-        //    var privilegeString = identity.Claims.FirstOrDefault(claim => claim.Type.Equals(ClaimTypes.Privileges.ToString()))?.Value ?? string.Empty;
+        // var privilegeString = identity.Claims.FirstOrDefault(claim => claim.Type.Equals(ClaimTypes.Privileges.ToString()))?.Value ?? string.Empty;
 
-        //    if (expiry == null)
-        //    {
-        //        context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
-        //        return;
-        //    }
+        // if (expiry == null)
+        // {
+        //     context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
+        //     return;
+        // }
 
-        //    HashSet<string>? privilegeHash = privilegeString?.Split(";").ToHashSet<string>();
+        // HashSet<string>? privilegeHash = privilegeString?.Split(";").ToHashSet<string>();
 
-        //    privilegeHash?.Add("ACCOUNT_MENU");
-        //    privilegeHash?.Add("REJECT");
-       
+        // privilegeHash?.Add("ACCOUNT_MENU");
+        // privilegeHash?.Add("REJECT");
 
-        //    var datetime = DateTimeOffset.FromUnixTimeSeconds(long.Parse(expiry.Value));
-        //    if (datetime.UtcDateTime <= DateTime.UtcNow)
-        //    {
-        //        context.Result = new JsonResult(new { message = "Unauthorized : Token has expired" }) { StatusCode = StatusCodes.Status401Unauthorized };
-        //        return;
-        //    }
 
-        //    context.HttpContext.User.AddIdentity(identity);
+        // var datetime = DateTimeOffset.FromUnixTimeSeconds(long.Parse(expiry.Value));
+        // if (datetime.UtcDateTime <= DateTime.UtcNow)
+        // {
+        //     context.Result = new JsonResult(new { message = "Unauthorized : Token has expired" }) { StatusCode = StatusCodes.Status401Unauthorized };
+        //     return;
+        // }
 
-        //}
+        // context.HttpContext.User.AddIdentity(identity);
 
     }
 

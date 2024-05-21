@@ -11,6 +11,8 @@ namespace Cotrucking.Wasm.Pages.Company
         public ICompanyService _companyService { get; set; }
         [Inject]
         public NavigationManager _navigationManager { get; set; }
+        [Inject]
+        public ILogger<CompanyEditBase> _logger { get; set; }
         [Parameter]
         public Guid? Id { get; set; }
 
@@ -33,6 +35,7 @@ namespace Cotrucking.Wasm.Pages.Company
 
         public void HandleValidSubmitAsync()
         {
+            _logger.LogInformation("Create Company");
             _navigationManager.NavigateTo("/company");
 
         }
