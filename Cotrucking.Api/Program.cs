@@ -21,9 +21,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(Constant.CorsName);
 app.UseSerilogIngestion();
 app.UseSerilogRequestLogging();
-app.UseCors(Constant.CorsName);
 app.MapHealthChecks(Constant.HealthEnpoint);
 app.UseHttpsRedirection();
 
