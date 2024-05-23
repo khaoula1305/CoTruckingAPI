@@ -4,9 +4,13 @@
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
-        <PageTitle>Not found</PageTitle>
+        <PageTitle>Page Not Found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+            <div class="alert alert-warning custom-404-content " role="alert">
+                <img src="assets/img/notfound.webp" alt="Not Found Image" style="max-width: 100%; height: auto; margin-bottom: 20px;" />
+                <h2>404 - Page Not Found</h2>
+                <p>We're sorry, but the page you are looking for does not exist. Please check the URL or return to the <a href="/">home page</a>.</p>
+            </div>
         </LayoutView>
     </NotFound>
 </Router>
