@@ -36,7 +36,6 @@ namespace Cotrucking.Wasm.Pages.Company
         public void HandleValidSubmitAsync()
         {
             _logger.LogWarning("Create Company");
-            _logger.LogError("Create Company");
             _navigationManager.NavigateTo("/company");
 
         }
