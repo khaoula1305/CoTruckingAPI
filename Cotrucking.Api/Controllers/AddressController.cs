@@ -11,9 +11,8 @@ namespace Cotrucking.Api.Controllers
     [ApiController]
     public class AddressController(IAddressService _addressService) : ControllerBase
     {
-        #region HttpMethod
-        [HttpGet]
-        [Authorize(FunctionalityConstants.VIEW, PageConstant.Address)]
+        #region HttpMethodx
+        [HttpGet, Authorize(FunctionalityConstants.VIEW, PageConstant.Address)]
         [ProducesResponseType(typeof(IEnumerable<AddressResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetAllCities()

@@ -9,7 +9,7 @@ namespace Cotrucking.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompaniesController(ICompanyService companyService) : ControllerBase
+    public class CompaniesController(ICompanyService companyService, ILogger<CompaniesController> logger) : ControllerBase
     {
         #region HttpMethod
         [HttpGet]
@@ -18,6 +18,7 @@ namespace Cotrucking.Api.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetAllCompany()
         {
+            logger.LogWarning("Get Company");
             return Ok(await companyService.GetAllAsync());
         }
 

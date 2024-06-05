@@ -81,9 +81,9 @@ namespace Cotrucking.Api.Extensions
             services.AddScoped<IPageFunctionalityRepository, PageFunctionalityRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
-            services.AddScoped<IShipmentRepository, ShipmentRepository >();
-            services.AddScoped<ITransporterRepository, TransporterRepository >();
-            services.AddScoped<ICompanyRepository, CompanyRepository >();
+            services.AddScoped<IShipmentRepository, ShipmentRepository>();
+            services.AddScoped<ITransporterRepository, TransporterRepository>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             #endregion
 

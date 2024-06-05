@@ -1,4 +1,4 @@
-﻿using Blazored.LocalStorage;
+using Blazored.LocalStorage;
 using Cotrucking.Wasm.Constant;
 using Cotrucking.Wasm.Models;
 using Newtonsoft.Json;
