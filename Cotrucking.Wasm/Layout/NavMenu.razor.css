@@ -10,4 +10,13 @@
         .dropdown-menu-flag li a img {
             margin-right: 10px;
         }
-        
+
+.nav-link {
+    padding: 10px;
+    text-decoration: none;
+}
+
+.nav-link.active {
+        font-weight: bold;
+        color: red;
+    }
