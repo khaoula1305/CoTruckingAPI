@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Cotrucking.Wasm;
 using Cotrucking.Wasm.Constant;
 using Cotrucking.Wasm.Services;
+using Blazored.LocalStorage;
+using Blazored.SessionStorage;
 using Serilog;
 using Serilog.Extensions.Logging;
 
@@ -24,7 +26,11 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.BrowserHttp(http)
     .CreateLogger();
 
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
 builder.Logging.AddProvider(new SerilogLoggerProvider());
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddBlazoredSessionStorage();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 
 await builder.Build().RunAsync();
