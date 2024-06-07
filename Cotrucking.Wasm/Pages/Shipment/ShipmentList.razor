@@ -1,2 +1,29 @@
 @page "/Shipment"
+@using Cotrucking.Wasm.Models
+@inherits ShipmentListBase
 
+<h3>Shipment available</h3>
+<div class="hotels-container">
+    @foreach (var hotel in Hotels)
+    {
+        <div class="hotel-card">
+            <img class="custom-404-content" src="@hotel.ImageUrl" alt="@hotel.Name" />
+            <div class="hotel-info">
+                <h3>@hotel.Name</h3>
+                <p>@hotel.Location</p>
+                <p class="price">$@hotel.Price / starting at</p>
+                <div class="rating">
+                    @for (int i = 0; i < Math.Floor(hotel.Rating); i++)
+                    {
+                        <i class="fas fa-star"></i>
+                    }
+                    @if (hotel.Rating % 1 > 0)
+                    {
+                        <i class="fas fa-star-half-alt"></i>
+                    }
+                    <span>@hotel.Rating</span>
+                </div>
+            </div>
+        </div>
+    }
+</div>

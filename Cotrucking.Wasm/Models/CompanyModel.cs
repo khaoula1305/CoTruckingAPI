@@ -10,3 +10,8 @@ public class CompanyModel
     public Guid AddressId { get; set; }
     public decimal Price { get; set; }
 }
+
+public class CompanySearch
+{
+    public string? Name { get; set; }
+}

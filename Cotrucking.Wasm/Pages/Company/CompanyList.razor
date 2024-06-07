@@ -1,13 +1,13 @@
 ﻿@page "/company"
 @using Cotrucking.Wasm.Models
-@using Radzen
-@using Radzen.Blazor
 @inherits CompanyListBase
 
-
-<RadzenDataList WrapItems="true" AllowPaging="false" Data="@companies" TItem="CompanyModel">
+<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Right" Gap="3rem" Wrap="FlexWrap.Wrap" class="rz-p-12">
+    <RadzenButton Click=@(args => OnAdd()) Icon="add" ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" class="rz-border-radius-10 rz-shadow-10"/>
+</RadzenStack>
+<RadzenDataList WrapItems="true" AllowPaging="false" Data="@Response.Items" TItem="CompanyModel">
     <Template Context="company">
-        <RadzenCard Style="width:300px;" @onclick="() => {NavigateToCompany(company.Id);}">
+        <RadzenCard Style="width:300px;" @onclick="() => {OnNavigateToCompany(company.Id);}">
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center">
                 <RadzenImage Path="@company.Photo" Style="width: 80px; height: 80px; bcompany-radius: 50%" AlternateText="@(company.Name + " " + company.Name)" />
                 <RadzenStack Gap="0">
@@ -30,4 +30,4 @@
     </Template>
 </RadzenDataList>
 
-<RadzenPager ShowPagingSummary="true" PagingSummaryFormat="@pagingSummaryFormat" HorizontalAlign="HorizontalAlign.Right" Count="count" PageSize="@pageSize" PageNumbersCount="5" PageChanged="@PageChanged" />
+<RadzenPager ShowPagingSummary="true" PagingSummaryFormat="@pagingSummaryFormat" HorizontalAlign="HorizontalAlign.Right" Count="Response.Count" PageSize="@pageSize" PageNumbersCount="5" PageChanged="@PageChanged" />

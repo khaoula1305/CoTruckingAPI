@@ -13,25 +13,32 @@ namespace Cotrucking.Wasm.Pages.Company
         [Inject]
         public NavigationManager NavigationManager { get; set; }
         public IEnumerable<CompanyModel> companies = new List<CompanyModel>();
+        public RequestModel<CompanySearch> Request = new();
+        public ResponseModel<CompanyModel> Response = new();
         public string pagingSummaryFormat = "Displaying page {0} of {1} (total {2} records)";
         public int pageSize = 6;
-        public int count;
 
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
-            companies = await CompanyService.GetAllAsync(Endpoints.Companies);
+            Response = await CompanyService.Search(Endpoints.Companies, Request);
             StateHasChanged();
         }
 
         public async Task PageChanged(PagerEventArgs args)
         {
-            companies = await CompanyService.GetAllAsync(Endpoints.Companies);
+            Request.Page = args.PageIndex;
+            Response = await CompanyService.Search(Endpoints.Companies, Request);
         }
 
-        public void NavigateToCompany(Guid id)
+        public void OnNavigateToCompany(Guid id)
         {
             NavigationManager.NavigateTo($"/Company/{id}");
+        }
+
+        public void OnAdd()
+        {
+            NavigationManager.NavigateTo($"/Company/Create");
         }
     }
 }
