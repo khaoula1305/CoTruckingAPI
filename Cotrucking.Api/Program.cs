@@ -27,7 +27,7 @@ app.UseSerilogIngestion();
 app.UseSerilogRequestLogging();
 app.MapHealthChecks(Constant.HealthEnpoint);
 app.UseHttpsRedirection();
-
+app.MapIdentityApi<IdentityUser>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<ExceptionHandlerMiddleware>();

@@ -24,6 +24,8 @@ namespace Cotrucking.Api.Extensions
                 options.UseSqlServer(appSettings.ConnectionStrings.CotruckingDb);
                 options.UseLazyLoadingProxies();
             });
+
+           
             services.AddAutoMapper(typeof(Program));
             services.AddLogging(options =>
             {
@@ -53,6 +55,12 @@ namespace Cotrucking.Api.Extensions
                         ValidateAudience = false
                     };
                 });
+             services.AddAuthentication()
+            .AddBearerToken(IdentityConstants.BearerSchema);
+            services.AddAuthorizationBuilder();
+            services.AddIdentityCore<IdentityUser>()
+            .AddEntityFrameworkStores<IdentityDbContext>()
+            .AddApiEndpoints();
             services.AddHealthChecks()
                 .AddSqlServer(connectionString: appSettings.ConnectionStrings.CotruckingDb,
                 failureStatus: HealthStatus.Degraded)
