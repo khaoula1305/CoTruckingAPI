@@ -7,6 +7,7 @@ using Blazored.LocalStorage;
 using Blazored.SessionStorage;
 using Serilog;
 using Serilog.Extensions.Logging;
+using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -31,6 +32,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Logging.AddProvider(new SerilogLoggerProvider());
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddBlazoredSessionStorage();
+builder.Services.AddRadzenComponents();
+
 builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IShipmentService, ShipmentService>();
 
 await builder.Build().RunAsync();

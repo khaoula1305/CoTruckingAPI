@@ -1,16 +1,11 @@
 using Cotrucking.Wasm.Models;
 namespace Cotrucking.Wasm.Services;
 
-public interface IShipmentService : IGenericService<ShipmentModel>
+public interface IShipmentService : IGenericService<ShipmentModel, ShipmentModel>
 {
 }
 
 
-public class ShipmentService : GenericService<ShipmentModel>, IShipmentService
+public class ShipmentService(HttpClient httpClient) : GenericService<ShipmentModel, ShipmentModel>(httpClient), IShipmentService
 {
-
-    public ShipmentService(HttpClient httpClient) : base(httpClient)
-    {
-
-    }
 }

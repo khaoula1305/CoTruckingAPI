@@ -1,16 +1,11 @@
 using Cotrucking.Wasm.Models;
 namespace Cotrucking.Wasm.Services;
 
-public interface ICompanyService : IGenericService<CompanyModel>
+public interface ICompanyService : IGenericService<CompanyModel, CompanySearch>
 {
 }
 
 
-public class CompanyService : GenericService<CompanyModel>, ICompanyService
+public class CompanyService(HttpClient httpClient) : GenericService<CompanyModel, CompanySearch>(httpClient), ICompanyService
 {
-
-    public CompanyService(HttpClient httpClient) : base(httpClient)
-    {
-
-    }
 }

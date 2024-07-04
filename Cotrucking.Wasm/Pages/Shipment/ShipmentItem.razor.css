@@ -1,0 +1,39 @@
+.hotel-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+}
+
+.hotel-card img {
+    width: 100%;
+    height: auto;
+}
+
+.hotel-info {
+    padding: 15px;
+}
+
+.hotel-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.hotel-info .price {
+    color: green;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating i {
+    color: gold;
+}
+
+.rating span {
+    margin-left: 5px;
+    font-weight: bold;
+}

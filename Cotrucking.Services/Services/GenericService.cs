@@ -4,6 +4,7 @@ using Cotrucking.Domain.Constants;
 using Cotrucking.Domain.Exceptions;
 using Cotrucking.Domain.Models.Common;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System.Linq.Expressions;
@@ -17,7 +18,7 @@ public interface IGenericService<DataModel, Response> where DataModel : class wh
     Task<IEnumerable<Response>> GetAllAsync();
     Task<IEnumerable<KeyValueModel>> GetKeyValueAsync();
     Task<IEnumerable<Response>> FindByAsync<Input>(Expression<Func<Input, bool>> expression);
-    Task<IEnumerable<Response>> GetAllByPage<Search>(RequestModel<Search> filters);
+    Task<ResponseModel<Response>> GetAllByPage<Search>(RequestModel<Search> filters);
     Task<Response> AddAsync<Input>(Input entity);
     Task<bool> AddRange<Input>(List<Input> entities);
     Task<bool> Delete(Guid id);
@@ -65,11 +66,15 @@ public class GenericService<DataModel, Response>(IGenericRepository<DataModel> r
         return mapper.Map<IQueryable<DataModel>, IQueryable<Response>>(await repository.FindAsync(repoExpression));
     }
 
-    public async Task<IEnumerable<Response>> GetAllByPage<Search>(RequestModel<Search> filters)
+    public async Task<ResponseModel<Response>> GetAllByPage<Search>(RequestModel<Search> filters)
     {
         var res = await repository.GetAllAsNoTrackingAsync();
-        res = res.Skip(filters.PageSize*(filters.Page-1)).Take(filters.PageSize);
-        return mapper.Map<IEnumerable<Response>>(res);
+        var response = new ResponseModel<Response>()
+        {
+            Count = await res.CountAsync(),
+            Items = mapper.Map<IEnumerable<Response>>(res.Skip(filters.PageSize * (filters.Page - 1)).Take(filters.PageSize))
+        };
+        return response;
     }
 
     /// <summary>
@@ -77,7 +82,7 @@ public class GenericService<DataModel, Response>(IGenericRepository<DataModel> r
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public async Task<Response> AddAsync<Input>(Input entity)
+    public virtual async Task<Response> AddAsync<Input>(Input entity)
     {
         var repoEntity = mapper.Map<DataModel>(entity);
         await repository.InsertAsync(repoEntity);
@@ -85,7 +90,7 @@ public class GenericService<DataModel, Response>(IGenericRepository<DataModel> r
         return mapper.Map<Response>(repoEntity);
     }
 
-    public async Task<bool> AddRange<Input>(List<Input> entities)
+    public virtual async Task<bool> AddRange<Input>(List<Input> entities)
     {
         List<DataModel> repoEntities = mapper.Map<List<Input>, List<DataModel>>(entities);
         await repository.InsertRangeAsync(repoEntities);
