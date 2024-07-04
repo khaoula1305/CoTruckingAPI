@@ -1,7 +1,7 @@
  ::deep input {
-     background-color: red;
+     background-color: #d3d3d3;
  }
 
  ::deep .form-control {
-     background-color: red;
+     background-color: #dddddd;
  }

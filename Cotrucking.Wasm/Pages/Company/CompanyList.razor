@@ -1,9 +1,33 @@
 ﻿@page "/company"
+@using Cotrucking.Wasm.Models
 @inherits CompanyListBase
 
-<h3>CompanyList</h3>
-@foreach(var company in companies)
-{
-    <a href="/Company/@company.Id"> the company @company.Name </a>
-}
+<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Right" Gap="3rem" Wrap="FlexWrap.Wrap" class="rz-p-12">
+    <RadzenButton Click=@(args => OnAdd()) Icon="add" ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" class="rz-border-radius-10 rz-shadow-10"/>
+</RadzenStack>
+<RadzenDataList WrapItems="true" AllowPaging="false" Data="@Response.Items" TItem="CompanyModel">
+    <Template Context="company">
+        <RadzenCard Style="width:300px;" @onclick="() => {OnNavigateToCompany(company.Id);}">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center">
+                <RadzenImage Path="@company.Photo" Style="width: 80px; height: 80px; bcompany-radius: 50%" AlternateText="@(company.Name + " " + company.Name)" />
+                <RadzenStack Gap="0">
+                    <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Employee</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body1"><b>@(company?.Name + " " + company?.Name)</b></RadzenText>
+                    <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">City</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body1"><b>@(company.Name), @(company.Address?.City?.Name)</b></RadzenText>
+                </RadzenStack>
+            </RadzenStack>
+            <hr style="border: none; background-color: rgba(0,0,0,.2); height: 1px; margin: 1rem 0;" />
+            <RadzenRow>
+                <RadzenColumn Size="8" Class="rz-text-truncate">
+                    <b>@(company.Name)</b>
+                </RadzenColumn>
+                <RadzenColumn Size="4" Class="rz-text-align-end">
+                    <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Text=@($"{String.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", company.Price)}") />
+                </RadzenColumn>
+            </RadzenRow>
+        </RadzenCard>
+    </Template>
+</RadzenDataList>
 
+<RadzenPager ShowPagingSummary="true" PagingSummaryFormat="@pagingSummaryFormat" HorizontalAlign="HorizontalAlign.Right" Count="Response.Count" PageSize="@pageSize" PageNumbersCount="5" PageChanged="@PageChanged" />

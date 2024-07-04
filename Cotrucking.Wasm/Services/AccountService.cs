@@ -13,7 +13,7 @@ namespace Cotrucking.Wasm.Services
         Task<List<MenuModel>> GetMenuAsync();
     }
 
-    public class AccountService(HttpClient httpClient, ILocalStorageService localStorageService) : GenericService<User>(httpClient), IAccountService
+    public class AccountService(HttpClient httpClient, ILocalStorageService localStorageService) : GenericService<User, User>(httpClient), IAccountService
     {
 
         public async Task<User> Login(LoginModel login)
@@ -28,9 +28,10 @@ namespace Cotrucking.Wasm.Services
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var user = JsonConvert.DeserializeObject<User>(content);
-                await localStorageService.SetItemAsync("user",user);
+                await localStorageService.SetItemAsync("user", user);
             }
-            else{
+            else
+            {
 
             }
             return new User();

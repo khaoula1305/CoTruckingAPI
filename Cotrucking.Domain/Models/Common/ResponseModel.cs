@@ -2,7 +2,7 @@
 {
     public class ResponseModel<T>
     {
-        public IEnumerable<T> Liste { get; set; } = new List<T>();
-        public int TotalCount { get; set; }
+        public IEnumerable<T> Items { get; set; } = new List<T>();
+        public int Count { get; set; }
     }
 }
