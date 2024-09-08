@@ -2,7 +2,9 @@
 {
     public class ApplicationDataModel : BaseEntity
     {
-        public int RequestId { get; set; }
-        public int TransporterId { get; set; }
+        public Guid RequestId { get; set; }
+        public virtual RequestDataModel Request { get; set; }
+        public Guid TransporterId { get; set; }
+        public virtual TransporterDataModel Transporter { get; set; }
     }
 }

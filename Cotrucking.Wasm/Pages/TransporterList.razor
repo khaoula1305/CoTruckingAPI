@@ -1,0 +1,60 @@
+﻿@page "/Transporter"
+@using System.Linq.Dynamic.Core
+
+@inherits TransporterListBase
+
+<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Right" Gap="3rem" Wrap="FlexWrap.Wrap" class="rz-p-12">
+    <RadzenButton Click=@(args => OnAdd()) Icon="add" ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" class="rz-border-radius-10 rz-shadow-10" />
+</RadzenStack>
+<RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+<RadzenDataGrid style="height: 335px" @ref="grid" IsLoading=@isLoading Count="@count" Data="@Transporters" LoadData="@LoadData" AllowSorting="true" AllowFiltering="true" AllowPaging="true" PageSize="4" PagerHorizontalAlign="HorizontalAlign.Center" ColumnWidth="200px">
+    <Columns>
+        <RadzenDataGridColumn Title="Photo" Frozen="true" Sortable="false" Filterable="false" Width="80px" TextAlign="TextAlign.Center">
+            <Template Context="data">
+                <RadzenImage Path="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fta.azureedge.net%2Fp%2Fimages%2Fusuarios%2Fl%2Fe3MjGAmO2EjI8vdkzgB2SbdcQZpdpL1m0.jpg%2F600x600cut%2F&f=1&nofb=1&ipt=6e4da3a2799eac41f104853abf9bdfb738a7a382e4e76400c9604acd59d1c05c&ipo=images" class="rz-gravatar" AlternateText="@(data.FirstName + " " + data.LastName)" />
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn Property="@nameof(TransporterModel.FirstName)" Title="First Name" Frozen="true" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(TransporterModel.LastName)" Title="Last Name" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(TransporterModel.HireDate)" Title="Hire Date" FormatString="{0:d}" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(TransporterModel.Address)" Title="Address" Width="200px" />
+        <RadzenDataGridColumn Property="@nameof(TransporterModel.PhoneNumber)" Title="Home Phone" Width="160px" />
+    </Columns>
+</RadzenDataGrid>
+@* 
+<RadzenCard class="rz-mt-6">
+    <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-mb-4">Perform custom data-binding</RadzenText>
+    <RadzenText TextStyle="TextStyle.Body1">
+        1. Set the Data and Count properties.
+    </RadzenText>
+    <pre class="rz-mt-4 rz-p-4">
+    <code>&lt;RadzenDataGrid Count="@@count" Data="@@Transporters"</code>
+        </pre>
+    <RadzenText TextStyle="TextStyle.Body1">
+        2. Handle the LoadData event and update the Data and Count backing fields (<code>Transporters</code> and <code>count</code> in this case).
+    </RadzenText>
+    <pre class="rz-mt-4 rz-p-4">
+    <code>
+void LoadData(LoadDataArgs args)
+{
+    var query = dbContext.Transporters.AsQueryable();
+
+    if (!string.IsNullOrEmpty(args.Filter))
+    {
+        query = query.Where(args.Filter);
+    }
+
+    if (!string.IsNullOrEmpty(args.OrderBy))
+    {
+        query = query.OrderBy(args.OrderBy);
+    }
+
+    count = query.Count();
+
+    Transporters = query.Skip(args.Skip.Value).Take(args.Top.Value).ToList();
+
+
+} 
+            </code>
+        </pre>
+</RadzenCard> *@

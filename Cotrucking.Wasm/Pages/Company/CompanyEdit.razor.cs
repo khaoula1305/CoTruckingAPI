@@ -32,7 +32,7 @@ namespace Cotrucking.Wasm.Pages.Company
             await base.SetParametersAsync(Parameters);
             if (Id != null)
             {
-                Company = await CompanyService.GetCompanyById(Endpoints.Companies, Id ?? Guid.Empty);
+                Company = await CompanyService.GetById(Endpoints.Companies, Id ?? Guid.Empty);
                 StateHasChanged();
             }
         }

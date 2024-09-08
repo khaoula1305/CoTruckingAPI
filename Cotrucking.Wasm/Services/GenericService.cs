@@ -9,7 +9,7 @@ public interface IGenericService<T, U> where T : new() where U : class
     Task<IEnumerable<T>> GetAllAsync(string url);
     Task<ResponseModel<T>> Search(string url, RequestModel<U> search);
     Task<T> Insert(string url, T model);
-    Task<T> GetCompanyById(string url, Guid id);
+    Task<T> GetById(string url, Guid id);
 }
 
 public class GenericService<T, U> : IGenericService<T, U> where T : new() where U : class
@@ -33,7 +33,7 @@ public class GenericService<T, U> : IGenericService<T, U> where T : new() where 
         return new List<T>();
     }
 
-    public virtual async Task<T> GetCompanyById(string url, Guid id)
+    public virtual async Task<T> GetById(string url, Guid id)
     {
         T? result = default;
         var response = await _httpClient.GetAsync(url + id);

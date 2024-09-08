@@ -36,5 +36,6 @@ builder.Services.AddRadzenComponents();
 
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IShipmentService, ShipmentService>();
+builder.Services.AddScoped<ITransporterService, TransporterService>();
 
 await builder.Build().RunAsync();

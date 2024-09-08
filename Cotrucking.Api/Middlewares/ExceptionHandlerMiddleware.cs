@@ -41,7 +41,8 @@ namespace Cotrucking.Api.Middlewares
                     break;
                 default:
                     httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    errorResponse.Message = "An error has occurred, Please try again";
+                    //errorResponse.Message = "An error has occurred, Please try again";
+                    errorResponse.Message = $"{exception.Message} {exception.StackTrace}";
                     errorResponse.Severity = Severity.Error;
                     break;
             }

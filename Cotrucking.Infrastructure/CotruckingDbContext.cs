@@ -23,6 +23,9 @@ namespace Cotrucking.Infrastructure
         public DbSet<CityDataModel> Cities { get; set; }
         public DbSet<VehicleDataModel> Vehicles { get; set; }
         public DbSet<ShipmentDataModel> Shipments { get; set; }
+        public DbSet<AssignmentDataModel> Assignments { get; set; }
+        public DbSet<RequestDataModel> Requests { get; set; }
+        public DbSet<ApplicationDataModel> Applications { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserDataModel>()
