@@ -1,6 +1,7 @@
 using Cotrucking.Api.Extensions;
 using Cotrucking.Api.Middlewares;
 using Cotrucking.Domain.Constants;
+using Microsoft.AspNetCore.Identity;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
