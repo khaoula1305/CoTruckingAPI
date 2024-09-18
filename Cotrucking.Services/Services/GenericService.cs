@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Cotrucking.Domain;
+using Cotrucking.Infrastructure;
 using Cotrucking.Domain.Constants;
 using Cotrucking.Domain.Exceptions;
 using Cotrucking.Domain.Models.Common;
@@ -72,7 +72,7 @@ public class GenericService<DataModel, Response>(IGenericRepository<DataModel> r
         var response = new ResponseModel<Response>()
         {
             Count = await res.CountAsync(),
-            Items = mapper.Map<IEnumerable<Response>>(res.Skip(filters.PageSize * (filters.Page - 1)).Take(filters.PageSize))
+            Items = mapper.ProjectTo<Response>(res.Skip(filters.PageSize * (filters.Page - 1)).Take(filters.PageSize))
         };
         return response;
     }

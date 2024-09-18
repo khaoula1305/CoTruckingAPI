@@ -1,4 +1,4 @@
-using Cotrucking.Wasm.Models;
+using Cotrucking.Domain.Models;
 namespace Cotrucking.Wasm.Services;
 
 public interface ICompanyService : IGenericService<CompanyModel, CompanySearch>

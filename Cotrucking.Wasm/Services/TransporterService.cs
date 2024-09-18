@@ -1,4 +1,6 @@
-﻿namespace Cotrucking.Wasm.Services;
+﻿using Cotrucking.Domain.Models;
+
+namespace Cotrucking.Wasm.Services;
 
 public interface ITransporterService : IGenericService<TransporterModel, TransporterSearch>
 {

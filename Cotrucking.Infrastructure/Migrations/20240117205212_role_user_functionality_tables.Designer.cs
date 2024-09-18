@@ -25,7 +25,7 @@ namespace Cotrucking.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.RoleDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.RoleDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.FunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.FunctionalityDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,7 +77,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Functionalities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Pages");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageFunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageFunctionalityDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("PageFunctionalities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.UserDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.UserDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,21 +181,21 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageFunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageFunctionalityDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.Security.FunctionalityDataModel", "Functionality")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.Security.FunctionalityDataModel", "Functionality")
                         .WithMany("PageFunctionalities")
                         .HasForeignKey("FunctionalityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cotrucking.Domain.Entities.Security.PageDataModel", "Page")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.Security.PageDataModel", "Page")
                         .WithMany("PageFunctionalities")
                         .HasForeignKey("PageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cotrucking.Domain.Entities.RoleDataModel", "Role")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.RoleDataModel", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -208,9 +208,9 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.UserDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.UserDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.RoleDataModel", "Role")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.RoleDataModel", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -219,17 +219,17 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.RoleDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.RoleDataModel", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.FunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.FunctionalityDataModel", b =>
                 {
                     b.Navigation("PageFunctionalities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageDataModel", b =>
                 {
                     b.Navigation("PageFunctionalities");
                 });

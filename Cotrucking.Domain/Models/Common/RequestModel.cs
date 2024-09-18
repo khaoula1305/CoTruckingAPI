@@ -7,6 +7,7 @@
         public T? Filters { get; set; } 
         public Sorting Sorts { get; set; } = new Sorting();
     }
+
     public class Sorting
     {
         public string? ColumnSort { get; set; }

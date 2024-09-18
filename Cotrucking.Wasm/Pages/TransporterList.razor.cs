@@ -1,9 +1,10 @@
 ﻿using Cotrucking.Wasm.Constant;
-using Cotrucking.Wasm.Models;
+using Cotrucking.Domain.Models;
 using Cotrucking.Wasm.Services;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
+using Cotrucking.Domain.Models.Common;
 
 namespace Cotrucking.Wasm.Pages;
 

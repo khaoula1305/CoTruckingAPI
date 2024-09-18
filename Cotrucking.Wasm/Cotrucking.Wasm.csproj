@@ -20,6 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cotrucking.Shared\Cotrucking.Shared.csproj" />
+    <ProjectReference Include="..\Cotrucking.Domain\Cotrucking.Domain.csproj" />
   </ItemGroup>
 </Project>

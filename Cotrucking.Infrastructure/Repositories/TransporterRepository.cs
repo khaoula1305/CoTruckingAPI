@@ -1,5 +1,5 @@
 ﻿using Cotrucking.Domain;
-using Cotrucking.Domain.Entities;
+using Cotrucking.Infrastructure.Entities;
 using Microsoft.AspNetCore.Http;
 
 namespace Cotrucking.Infrastructure.Repositories

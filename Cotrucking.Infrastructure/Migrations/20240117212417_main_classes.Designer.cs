@@ -25,7 +25,7 @@ namespace Cotrucking.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.AddressDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.AddressDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +62,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CityDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,7 +93,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CompanyDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CompanyDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -130,7 +130,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CountryDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CountryDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,7 +159,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CustomerDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CustomerDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -188,7 +188,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("CustomerDataModel");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.RoleDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.RoleDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -214,7 +214,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.FunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.FunctionalityDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -240,7 +240,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Functionalities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -266,7 +266,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Pages");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageFunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageFunctionalityDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -304,7 +304,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("PageFunctionalities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.TransporterDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.TransporterDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -344,7 +344,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Transporters");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.UserDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.UserDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -384,7 +384,7 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.VehicleDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.VehicleDataModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -424,9 +424,9 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.ToTable("Vehicles");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.AddressDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.AddressDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.CityDataModel", "City")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.CityDataModel", "City")
                         .WithMany()
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -435,9 +435,9 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CityDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.CountryDataModel", "Country")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.CountryDataModel", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -446,9 +446,9 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CompanyDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CompanyDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.AddressDataModel", "Address")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.AddressDataModel", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -457,32 +457,32 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("Address");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CustomerDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CustomerDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.UserDataModel", "User")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.UserDataModel", "User")
                         .WithOne("Customer")
-                        .HasForeignKey("Cotrucking.Domain.Entities.CustomerDataModel", "UserId")
+                        .HasForeignKey("Cotrucking.Infrastructure.Entities.CustomerDataModel", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageFunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageFunctionalityDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.Security.FunctionalityDataModel", "Functionality")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.Security.FunctionalityDataModel", "Functionality")
                         .WithMany("PageFunctionalities")
                         .HasForeignKey("FunctionalityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cotrucking.Domain.Entities.Security.PageDataModel", "Page")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.Security.PageDataModel", "Page")
                         .WithMany("PageFunctionalities")
                         .HasForeignKey("PageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cotrucking.Domain.Entities.RoleDataModel", "Role")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.RoleDataModel", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -495,15 +495,15 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.TransporterDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.TransporterDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.CompanyDataModel", "Company")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.CompanyDataModel", "Company")
                         .WithMany("Transporters")
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("Cotrucking.Domain.Entities.UserDataModel", "User")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.UserDataModel", "User")
                         .WithOne("Transporter")
-                        .HasForeignKey("Cotrucking.Domain.Entities.TransporterDataModel", "UserId")
+                        .HasForeignKey("Cotrucking.Infrastructure.Entities.TransporterDataModel", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -512,9 +512,9 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.UserDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.UserDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.RoleDataModel", "Role")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.RoleDataModel", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -523,38 +523,38 @@ namespace Cotrucking.Infrastructure.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.VehicleDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.VehicleDataModel", b =>
                 {
-                    b.HasOne("Cotrucking.Domain.Entities.CompanyDataModel", "Company")
+                    b.HasOne("Cotrucking.Infrastructure.Entities.CompanyDataModel", "Company")
                         .WithMany("Vehicles")
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.CompanyDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.CompanyDataModel", b =>
                 {
                     b.Navigation("Transporters");
 
                     b.Navigation("Vehicles");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.RoleDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.RoleDataModel", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.FunctionalityDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.FunctionalityDataModel", b =>
                 {
                     b.Navigation("PageFunctionalities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.Security.PageDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.Security.PageDataModel", b =>
                 {
                     b.Navigation("PageFunctionalities");
                 });
 
-            modelBuilder.Entity("Cotrucking.Domain.Entities.UserDataModel", b =>
+            modelBuilder.Entity("Cotrucking.Infrastructure.Entities.UserDataModel", b =>
                 {
                     b.Navigation("Customer");
 

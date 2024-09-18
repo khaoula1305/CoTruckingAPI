@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Cotrucking.Wasm.Models;
+using Cotrucking.Domain.Models;
 
 namespace Cotrucking.Wasm.Pages.Account
 {
@@ -11,5 +11,6 @@ namespace Cotrucking.Wasm.Pages.Account
         {
 
         }
+
     }
 }

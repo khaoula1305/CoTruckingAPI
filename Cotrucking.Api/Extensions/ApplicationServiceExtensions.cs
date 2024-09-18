@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using Cotrucking.Domain.Constants;
 using Cotrucking.Domain.Extensions;
-using Cotrucking.Domain.Interfaces.Security;
+using Cotrucking.Infrastructure.Interfaces.Security;
 using Cotrucking.Infrastructure;
 using Cotrucking.Infrastructure.Repositories;
 using Cotrucking.Infrastructure.Repositories.Security;

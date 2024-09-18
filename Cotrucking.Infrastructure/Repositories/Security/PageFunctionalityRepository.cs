@@ -1,5 +1,5 @@
-﻿using Cotrucking.Domain.Entities.Security;
-using Cotrucking.Domain.Interfaces.Security;
+﻿using Cotrucking.Infrastructure.Entities.Security;
+using Cotrucking.Infrastructure.Interfaces.Security;
 using Microsoft.AspNetCore.Http;
 
 namespace Cotrucking.Infrastructure.Repositories.Security

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Cotrucking.Domain.Entities;
+using Cotrucking.Infrastructure.Entities;
 using Cotrucking.Domain.Models;
 using Cotrucking.Infrastructure.Repositories;
 using DocumentFormat.OpenXml.Wordprocessing;

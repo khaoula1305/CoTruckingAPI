@@ -1,8 +1,8 @@
 using System.Net;
 using System.Text;
 using Cotrucking.Wasm.Constant;
-using Cotrucking.Wasm.Models;
 using Newtonsoft.Json;
+using Cotrucking.Domain.Models.Common;
 namespace Cotrucking.Wasm.Services;
 public interface IGenericService<T, U> where T : new() where U : class
 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Cotrucking.Domain.Entities;
+using Cotrucking.Infrastructure.Entities;
 using Cotrucking.Domain.Models;
 using Cotrucking.Domain.Models.Common;
 
@@ -17,6 +17,14 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<CityInput, CityDataModel>();
             #endregion
 
+            #region User
+            CreateMap<UserDataModel, UserResponse>();
+            CreateMap<UserDataModel, KeyValueModel>()
+                .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => $"{x.Username } {x.Firstname}"));
+            CreateMap<UserInput, UserDataModel>();
+            #endregion
+
             #region Country
             CreateMap<CountryDataModel, CountryResponse>();
             CreateMap<CountryDataModel, KeyValueModel>()
@@ -25,13 +33,6 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<CountryInput, CountryDataModel>();
             #endregion
 
-            #region Transprter
-            CreateMap<TransporterDataModel, TransporterResponse>();
-            CreateMap<TransporterDataModel, KeyValueModel>()
-                .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
-                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.User == null ? string.Empty : $"{x.User.Lastname} {x.User.Firstname}"));
-            CreateMap<TransporterInput, TransporterDataModel>();
-            #endregion
 
             #region Shipment
             CreateMap<ShipmentDataModel, ShipmentResponse>();
@@ -55,6 +56,14 @@ namespace Cotrucking.Domain.Configuration
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
                 .ForMember(src => src.Value, opt => opt.MapFrom(x => x.Address));
             CreateMap<AddressInput, AddressDataModel>();
+            #endregion
+
+            #region Transprter
+            CreateMap<TransporterDataModel, TransporterResponse>();
+            CreateMap<TransporterDataModel, KeyValueModel>()
+                .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => x.User == null ? string.Empty : $"{x.User.Lastname} {x.User.Firstname}"));
+            CreateMap<TransporterInput, TransporterDataModel>();
             #endregion
         }
     }

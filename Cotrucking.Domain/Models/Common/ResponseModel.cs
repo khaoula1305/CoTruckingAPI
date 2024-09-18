@@ -1,8 +1,8 @@
-﻿namespace Cotrucking.Domain.Models.Common
+namespace Cotrucking.Domain.Models.Common
 {
-    public class ResponseModel<T>
+    public class ResponseModel<T> 
     {
-        public IEnumerable<T> Items { get; set; } = new List<T>();
         public int Count { get; set; }
+        public IEnumerable<T> Items { get; set; } = Enumerable.Empty<T>();
     }
 }

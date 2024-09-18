@@ -1,7 +1,8 @@
+using Cotrucking.Domain.Models;
+using Cotrucking.Domain.Models.Common;
 using Cotrucking.Wasm.Constant;
-using Microsoft.AspNetCore.Components;
 using Cotrucking.Wasm.Services;
-using Cotrucking.Wasm.Models;
+using Microsoft.AspNetCore.Components;
 using Radzen;
 
 namespace Cotrucking.Wasm.Pages.Company

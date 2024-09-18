@@ -25,4 +25,10 @@
         public string? Name { get; set; }
         public CountryResponse? Country { get; set; }
     }
+
+    public class CityModel
+    {
+        public string? Name { get; set; }
+        public Guid CountryId { get; set; }
+    }
 }
