@@ -7,6 +7,8 @@ using Cotrucking.Infrastructure.Repositories;
 using Cotrucking.Infrastructure.Repositories.Security;
 using Cotrucking.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
@@ -24,6 +26,13 @@ namespace Cotrucking.Api.Extensions
                 options.UseSqlServer(appSettings.ConnectionStrings.CotruckingDb);
                 options.UseLazyLoadingProxies();
             });
+
+            services.AddDbContext<IdentityDbContext>(optionq =>
+            {
+                optionq.UseSqlServer(appSettings.ConnectionStrings.CotruckingDb);
+            });
+
+
             services.AddAutoMapper(typeof(Program));
             services.AddLogging(options =>
             {
@@ -53,6 +62,12 @@ namespace Cotrucking.Api.Extensions
                         ValidateAudience = false
                     };
                 });
+            services.AddAuthentication()
+           .AddBearerToken(IdentityConstants.BearerScheme);
+            services.AddAuthorizationBuilder();
+            services.AddIdentityCore<IdentityUser>()
+            .AddEntityFrameworkStores<IdentityDbContext>()
+            .AddApiEndpoints();
             services.AddHealthChecks()
                 .AddSqlServer(connectionString: appSettings.ConnectionStrings.CotruckingDb,
                 failureStatus: HealthStatus.Degraded)
