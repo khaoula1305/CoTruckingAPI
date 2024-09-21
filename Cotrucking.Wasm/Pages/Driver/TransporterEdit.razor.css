@@ -1,0 +1,53 @@
+﻿::deep .custom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f5f7;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.headline-text {
+    color: #00af87;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle-text {
+    font-size: 1.2rem;
+    color: #343a40;
+    margin-bottom: 2rem;
+}
+
+.custom-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.register-button {
+    width: 100%;
+    background-color: #00af87;
+    color: #fff;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+    .register-button:hover {
+        background-color: #008f6f;
+    }
+
+::deep .image-column {
+    text-align: center;
+}
+
+    ::deep .image-column img {
+        border-radius: 10px;
+    }

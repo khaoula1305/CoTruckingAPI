@@ -1,13 +1,12 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
+
 namespace Cotrucking.Infrastructure.Entities;
 
-public class UserDataModel : BaseEntity
+public class UserDataModel : IdentityUser<Guid>
 {
     public string? Firstname { get; set; }
     public string? Lastname { get; set; }
-    public string? Username { get; set; }
-    public string? Password { get; set; }
-    public string? Email { get; set; }
     public string? PersonalPhoneNumber { get; set; }
     public Guid RoleId { get; set; }
     public virtual RoleDataModel Role { get; set; } = new();

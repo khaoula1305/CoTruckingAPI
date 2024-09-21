@@ -55,8 +55,25 @@
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script
-        src="_content/Radzen.Blazor/Radzen.Blazor.js?v=@(typeof(Radzen.Colors).Assembly.GetName().Version)"></script>
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js?v=@(typeof(Radzen.Colors).Assembly.GetName().Version)"></script>
+    <script>
+        document.addEventListener('mousemove', function (event) {
+            const image = document.getElementById('rotate-image');
+            if (image) {
+                // Get mouse coordinates
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+
+                // Calculate rotation based on mouse position
+                const rotateX = (window.innerHeight / 2 - mouseY) / 20;
+                const rotateY = (mouseX - window.innerWidth / 2) / 20;
+
+                // Apply CSS rotation transformation to the image
+                image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+        });
+    </script>
+
 
 </body>
 

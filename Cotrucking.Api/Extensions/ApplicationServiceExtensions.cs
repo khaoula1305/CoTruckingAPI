@@ -1,17 +1,18 @@
 ﻿using Asp.Versioning;
 using Cotrucking.Domain.Constants;
 using Cotrucking.Domain.Extensions;
-using Cotrucking.Infrastructure.Interfaces.Security;
 using Cotrucking.Infrastructure;
+using Cotrucking.Infrastructure.Entities;
+using Cotrucking.Infrastructure.Interfaces.Security;
 using Cotrucking.Infrastructure.Repositories;
 using Cotrucking.Infrastructure.Repositories.Security;
 using Cotrucking.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 namespace Cotrucking.Api.Extensions
 {
     public static class ApplicationServiceExtensions
@@ -27,12 +28,18 @@ namespace Cotrucking.Api.Extensions
                 options.UseLazyLoadingProxies();
             });
 
-            services.AddDbContext<IdentityDbContext>(optionq =>
+            var tokenValidationParameters = new TokenValidationParameters
             {
-                optionq.UseSqlServer(appSettings.ConnectionStrings.CotruckingDb);
-            });
-
-
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSettings.Jwt.Secret)),
+                ValidateIssuer = true,
+                ValidIssuer = appSettings.Jwt.Issuer,
+                ValidateAudience = true,
+                ValidAudience = appSettings.Jwt.Audience,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+            services.AddSingleton(tokenValidationParameters);
             services.AddAutoMapper(typeof(Program));
             services.AddLogging(options =>
             {
@@ -52,22 +59,29 @@ namespace Cotrucking.Api.Extensions
 
             //authentification Middlewear
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            // Or Add Authentication
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
                 .AddJwtBearer(options =>
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(appSettings.TokenKey)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
+                    // Mecanisme that will be used to validate token
+                    options.SaveToken = true;
+                    options.RequireHttpsMetadata = false; // allow http as well
+                    options.TokenValidationParameters = tokenValidationParameters;
                 });
-            services.AddAuthentication()
-           .AddBearerToken(IdentityConstants.BearerScheme);
+
+
             services.AddAuthorizationBuilder();
-            services.AddIdentityCore<IdentityUser>()
-            .AddEntityFrameworkStores<IdentityDbContext>()
-            .AddApiEndpoints();
+
+            // Add identity
+            services.AddIdentity<UserDataModel, RoleDataModel>()
+            .AddEntityFrameworkStores<CotruckingDbContext>()
+            .AddDefaultTokenProviders();
+
             services.AddHealthChecks()
                 .AddSqlServer(connectionString: appSettings.ConnectionStrings.CotruckingDb,
                 failureStatus: HealthStatus.Degraded)
@@ -100,6 +114,8 @@ namespace Cotrucking.Api.Extensions
             services.AddScoped<ITransporterRepository, TransporterRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             #endregion
 
             #region services
@@ -109,6 +125,7 @@ namespace Cotrucking.Api.Extensions
             services.AddScoped<ITransporterService, TransporterService>();
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<IUserService, UserService>();
             #endregion
         }
     }

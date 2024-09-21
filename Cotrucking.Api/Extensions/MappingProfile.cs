@@ -21,7 +21,7 @@ namespace Cotrucking.Domain.Configuration
             CreateMap<UserDataModel, UserResponse>();
             CreateMap<UserDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
-                .ForMember(src => src.Value, opt => opt.MapFrom(x => $"{x.Username } {x.Firstname}"));
+                .ForMember(src => src.Value, opt => opt.MapFrom(x => $"{x.Firstname } {x.Lastname}"));
             CreateMap<UserInput, UserDataModel>();
             #endregion
 

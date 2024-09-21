@@ -2,9 +2,8 @@
 
 namespace Cotrucking.Infrastructure.Entities
 {
-    public class RoleDataModel : BaseEntity
+    public class RoleDataModel: IdentityRole<Guid>
     {
-        public string? RoleName { get; set; }
         public virtual ICollection<UserDataModel> Users { get; set; } = [];
     }
 }

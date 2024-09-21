@@ -2,12 +2,10 @@
 @inherits RegisterBase
 
 <RadzenTemplateForm TItem="TransporterModel" Submit="@OnSubmit" Data="@employee">
-    <div class="row">
-        <div class="col-md-6">
-            <RadzenLabel Text="First Name" />
-            <RadzenTextBox @bind-Value="employee.FirstName" Name="FirstName" />
-            <RadzenRequiredValidator Component="FirstName" Text="First name is required" />
-        </div>
+    <RadzenRow>
+        <RadzenLabel Text="First Name" />
+        <RadzenTextBox @bind-Value="employee.FirstName" Name="FirstName" />
+        <RadzenRequiredValidator Component="FirstName" Text="First name is required" />
 
         <div class="col-md-6">
             <RadzenLabel Text="Last Name" />
@@ -38,5 +36,5 @@
         <div class="col-md-12">
             <RadzenButton Text="Submit" ButtonType="ButtonType.Submit" />
         </div>
-    </div>
+    </RadzenRow>
 </RadzenTemplateForm>

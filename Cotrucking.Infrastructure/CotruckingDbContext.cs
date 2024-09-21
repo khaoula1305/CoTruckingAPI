@@ -5,15 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cotrucking.Infrastructure
 {
-    public class CotruckingDbContext : DbContext
+    public class CotruckingDbContext : IdentityDbContext<UserDataModel,RoleDataModel, Guid>
     {
         public CotruckingDbContext(DbContextOptions<CotruckingDbContext> options) : base(options)
         {
         }
 
         public DbSet<PageFunctionalityDataModel> PageFunctionalities { get; set; }
-        public DbSet<UserDataModel> Users { get; set; }
-        public DbSet<RoleDataModel> Roles { get; set; }
         public DbSet<PageDataModel> Pages { get; set; }
         public DbSet<FunctionalityDataModel> Functionalities { get; set; }
         public DbSet<CompanyDataModel> Companies { get; set; }
@@ -26,8 +24,10 @@ namespace Cotrucking.Infrastructure
         public DbSet<AssignmentDataModel> Assignments { get; set; }
         public DbSet<RequestDataModel> Requests { get; set; }
         public DbSet<ApplicationDataModel> Applications { get; set; }
+        public DbSet<RefreshTokenDataModel> RefreshTokens { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<UserDataModel>()
                 .HasOne(x => x.Role)
                 .WithMany(y => y.Users)
@@ -38,7 +38,6 @@ namespace Cotrucking.Infrastructure
                 .HasOne(x => x.Transporter)
                 .WithOne(x => x.User)
                 .OnDelete(DeleteBehavior.SetNull);
-
             modelBuilder.Entity<TransporterDataModel>()
                 .HasOne(x => x.User)
                 .WithOne(y => y.Transporter)
