@@ -24,7 +24,7 @@
       <Property Name="Address" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Transporters" />
+      <Property Name="Drivers" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Cotrucking.Infrastructure.Entities.RequestDataModel">
@@ -48,11 +48,11 @@
       <FileName>Entities\ShipmentDataModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Cotrucking.Infrastructure.Entities.TransporterDataModel">
+  <Class Name="Cotrucking.Infrastructure.Entities.DriverDataModel">
     <Position X="14" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAIAAAAAAAABEAgAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Entities\Transporter.cs</FileName>
+      <FileName>Entities\Driver.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Company" />

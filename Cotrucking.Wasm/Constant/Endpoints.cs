@@ -5,7 +5,7 @@ namespace Cotrucking.Wasm.Constant
 
         public static string BaseUrl { get; set; } = string.Empty;
         public static string Companies { get; set; } = string.Empty;
-        public static string Transporters { get; set; } = string.Empty;
+        public static string Drivers { get; set; } = string.Empty;
         public static string Shipments { get; set; } = string.Empty;
         public static string Login { get; set; } = string.Empty;
         public static string Menu { get; set; } = string.Empty;
@@ -16,7 +16,7 @@ namespace Cotrucking.Wasm.Constant
             Login = $"{BaseUrl}/Login/";
             Menu = $"{BaseUrl}/Menu/";
             Shipments = $"{BaseUrl}/Shipments/";
-            Transporters = $"{BaseUrl}/Transporters/";
+            Drivers = $"{BaseUrl}/Drivers/";
         }
     }
 }

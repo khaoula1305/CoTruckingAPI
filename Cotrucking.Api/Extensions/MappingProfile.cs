@@ -59,11 +59,11 @@ namespace Cotrucking.Domain.Configuration
             #endregion
 
             #region Transprter
-            CreateMap<TransporterDataModel, TransporterResponse>();
-            CreateMap<TransporterDataModel, KeyValueModel>()
+            CreateMap<DriverDataModel, DriverResponse>();
+            CreateMap<DriverDataModel, KeyValueModel>()
                 .ForMember(src => src.Key, opt => opt.MapFrom(x => x.Id))
                 .ForMember(src => src.Value, opt => opt.MapFrom(x => x.User == null ? string.Empty : $"{x.User.Lastname} {x.User.Firstname}"));
-            CreateMap<TransporterInput, TransporterDataModel>();
+            CreateMap<DriverInput, DriverDataModel>();
             #endregion
         }
     }

@@ -8,28 +8,28 @@ using Cotrucking.Domain.Models.Common;
 
 namespace Cotrucking.Wasm.Pages;
 
-public class TransporterListBase : ComponentBase
+public class DriverListBase : ComponentBase
 {
     [Inject]
-    public ITransporterService TransporterService { get; set; }
+    public IDriverService DriverService { get; set; }
     [Inject]
     public NavigationManager NavigationManager { get; set; }
-    public IEnumerable<TransporterModel> transporters = new List<TransporterModel>();
-    public RequestModel<TransporterSearch> Request = new();
-    public ResponseModel<TransporterModel> Response = new();
+    public IEnumerable<DriverModel> transporters = new List<DriverModel>();
+    public RequestModel<DriverSearch> Request = new();
+    public ResponseModel<DriverModel> Response = new();
     public string pagingSummaryFormat = "Displaying page {0} of {1} (total {2} records)";
     public int pageSize = 6;
     //What i need
-    public RadzenDataGrid<TransporterModel> grid;
+    public RadzenDataGrid<DriverModel> grid;
     public int count;
-    public IEnumerable<TransporterModel> Transporters;
+    public IEnumerable<DriverModel> Drivers;
     public bool isLoading = false;
     public List<string> titles = new List<string> { "Sales Representative", "Vice President, Sales", "Sales Manager", "Inside Sales Coordinator" };
     public IEnumerable<string> selectedTitles;
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        Response = await TransporterService.Search(Endpoints.Transporters, Request);
+        Response = await DriverService.Search(Endpoints.Drivers, Request);
         StateHasChanged();
     }
 
@@ -51,26 +51,26 @@ public class TransporterListBase : ComponentBase
         Request.Page = args.Skip.Value / args.Top.Value +1;
 
         // Important!!! Make sure the Count property of RadzenDataGrid is set.
-        Response = await TransporterService.Search(Endpoints.Transporters, Request);
+        Response = await DriverService.Search(Endpoints.Drivers, Request);
         count = Response.Count;
-        Transporters = Response.Items;
+        Drivers = Response.Items;
         isLoading = false;
     }
 
     public async Task PageChanged(PagerEventArgs args)
     {
         Request.Page = args.PageIndex;
-        Response = await TransporterService.Search(Endpoints.Transporters, Request);
+        Response = await DriverService.Search(Endpoints.Drivers, Request);
     }
 
-    public void OnNavigateToTransporter(Guid id)
+    public void OnNavigateToDriver(Guid id)
     {
-        NavigationManager.NavigateTo($"/Transporter/{id}");
+        NavigationManager.NavigateTo($"/Driver/{id}");
     }
 
     public void OnAdd()
     {
-        NavigationManager.NavigateTo($"/Transporter/Create");
+        NavigationManager.NavigateTo($"/Driver/Create");
     }
 
 

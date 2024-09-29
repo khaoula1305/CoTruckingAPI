@@ -111,7 +111,7 @@ namespace Cotrucking.Api.Extensions
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<IShipmentRepository, ShipmentRepository>();
-            services.AddScoped<ITransporterRepository, TransporterRepository>();
+            services.AddScoped<IDriverRepository, DriverRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -122,7 +122,7 @@ namespace Cotrucking.Api.Extensions
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IShipmentService, ShipmentService>();
-            services.AddScoped<ITransporterService, TransporterService>();
+            services.AddScoped<IDriverService, DriverService>();
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IUserService, UserService>();

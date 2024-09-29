@@ -64,5 +64,5 @@ GET {{Cotrucking.Api_HostAddress}}/Shipments/
 Accept: application/json
 
 ###
-GET {{Cotrucking.Api_HostAddress}}/Transporters/
+GET {{Cotrucking.Api_HostAddress}}/Drivers/
 Accept: application/json

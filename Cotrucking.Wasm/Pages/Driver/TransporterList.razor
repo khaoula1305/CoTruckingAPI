@@ -1,13 +1,13 @@
-﻿@page "/Transporter"
+﻿@page "/Driver"
 @using System.Linq.Dynamic.Core
 
-@inherits TransporterListBase
+@inherits DriverListBase
 
 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Right" Gap="3rem" Wrap="FlexWrap.Wrap" class="rz-p-12">
     <RadzenButton Click=@(args => OnAdd()) Icon="add" ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" class="rz-border-radius-10 rz-shadow-10" />
 </RadzenStack>
 <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
-<RadzenDataGrid style="height: 335px" @ref="grid" IsLoading=@isLoading Count="@count" Data="@Transporters" LoadData="@LoadData" AllowSorting="true" AllowFiltering="true" AllowPaging="true" PageSize="4" PagerHorizontalAlign="HorizontalAlign.Center" ColumnWidth="200px">
+<RadzenDataGrid style="height: 335px" @ref="grid" IsLoading=@isLoading Count="@count" Data="@Drivers" LoadData="@LoadData" AllowSorting="true" AllowFiltering="true" AllowPaging="true" PageSize="4" PagerHorizontalAlign="HorizontalAlign.Center" ColumnWidth="200px">
     <Columns>
         <RadzenDataGridColumn Title="Photo" Frozen="true" Sortable="false" Filterable="false" Width="80px" TextAlign="TextAlign.Center">
             <Template Context="data">
@@ -15,10 +15,10 @@
             </Template>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn Property="@nameof(UserModel.Firstname)" Title="First Name" Frozen="true" Width="160px" />
-        <RadzenDataGridColumn Property="@nameof(TransporterModel.User.Lastname)" Title="Last Name" Width="160px" />
-        <RadzenDataGridColumn Property="@nameof(TransporterModel.HireDate)" Title="Hire Date" FormatString="{0:d}" Width="160px" />
-        <RadzenDataGridColumn Property="@nameof(TransporterModel.Address)" Title="Address" Width="200px" />
-        <RadzenDataGridColumn Property="@nameof(TransporterModel.User.PersonalPhoneNumber)" Title="Phone number" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(DriverModel.User.Lastname)" Title="Last Name" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(DriverModel.HireDate)" Title="Hire Date" FormatString="{0:d}" Width="160px" />
+        <RadzenDataGridColumn Property="@nameof(DriverModel.Address)" Title="Address" Width="200px" />
+        <RadzenDataGridColumn Property="@nameof(DriverModel.User.PersonalPhoneNumber)" Title="Phone number" Width="160px" />
     </Columns>
 </RadzenDataGrid>
 @* 
@@ -28,16 +28,16 @@
         1. Set the Data and Count properties.
     </RadzenText>
     <pre class="rz-mt-4 rz-p-4">
-    <code>&lt;RadzenDataGrid Count="@@count" Data="@@Transporters"</code>
+    <code>&lt;RadzenDataGrid Count="@@count" Data="@@Drivers"</code>
         </pre>
     <RadzenText TextStyle="TextStyle.Body1">
-        2. Handle the LoadData event and update the Data and Count backing fields (<code>Transporters</code> and <code>count</code> in this case).
+        2. Handle the LoadData event and update the Data and Count backing fields (<code>Drivers</code> and <code>count</code> in this case).
     </RadzenText>
     <pre class="rz-mt-4 rz-p-4">
     <code>
 void LoadData(LoadDataArgs args)
 {
-    var query = dbContext.Transporters.AsQueryable();
+    var query = dbContext.Drivers.AsQueryable();
 
     if (!string.IsNullOrEmpty(args.Filter))
     {
@@ -51,7 +51,7 @@ void LoadData(LoadDataArgs args)
 
     count = query.Count();
 
-    Transporters = query.Skip(args.Skip.Value).Take(args.Top.Value).ToList();
+    Drivers = query.Skip(args.Skip.Value).Take(args.Top.Value).ToList();
 
 
 } 

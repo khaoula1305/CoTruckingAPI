@@ -1,7 +1,7 @@
 ﻿using Cotrucking.Domain.Enums;
 
 namespace Cotrucking.Infrastructure.Entities;
-public class TransporterDataModel: BaseEntity
+public class DriverDataModel: BaseEntity
 {
     public string? Description { get; set; }
     public decimal? Salary { get; set; }
@@ -15,4 +15,5 @@ public class TransporterDataModel: BaseEntity
     public DateTime? HireDate { get; set; }
     public virtual ICollection<ShipmentDataModel>? Shipments { get; set; }
     public virtual ICollection<ApplicationDataModel>? Applications { get; set; }
+    public virtual ICollection<VehiculeDataModel>? AssignedVehicules { get; set; }
 }

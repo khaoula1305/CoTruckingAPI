@@ -3,7 +3,7 @@
 @inject ILogger<Login> Logger
 @inject NavigationManager NavigationManager
 
-<RadzenTemplateForm TItem="TransporterModel" Submit="@OnSubmit" Data="@employee">
+<RadzenTemplateForm TItem="DriverModel" Submit="@OnSubmit" Data="@employee">
         <RadzenRow>
             <RadzenLabel Text="First Name" />
             <RadzenTextBox @bind-Value="employee.FirstName" Name="FirstName" />

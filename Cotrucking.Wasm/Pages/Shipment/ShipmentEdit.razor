@@ -1,62 +1,45 @@
-﻿@page "/shipement/create"
-@using MudBlazor
+﻿@page "/shipment/create"
+@inherits ShipmentEditBase
 
-<MudPaper Class="pa-4">
-    <MudText Typo="Typo.h5">Add a New Expedition</MudText>
+<RadzenTemplateForm Data="@Shipment" TItem="ShipmentModel"  OnValidSubmit="HandleValidSubmitAsync">
+    <div class="form-group">
+        <RadzenLabel Text="Vehicle" />
+        <RadzenDropDown @bind-Value="Shipment.VehiculeId"
+                        Data="@vehicles"
+                        TextProperty="Model"
+                        ValueProperty="Id"
+                        Placeholder="Select a vehicle"
+                        Style="width: 100%;" />
+    </div>
 
-    <MudForm @ref="form" Valid="isValid">
-        <MudTextField @bind-Value="expedition.Vehicle" Label="Vehicle" Required="true" Placeholder="Select vehicle" />
-        <MudTextField @bind-Value="expedition.ExpeditionType" Label="Expedition Type" Required="true" Placeholder="Goods Transport / People Transport" />
-        <MudTextField @bind-Value="expedition.Description" Label="Description" Required="true" Placeholder="Short description of the expedition" />
+    <div class="form-group">
+        <RadzenLabel Text="Expedition Type" />
+        <RadzenDropDown @bind-Value="Shipment.ExpeditionType"
+                        Data="@expeditionTypes"
+                        Placeholder="Select an expedition type"
+                        Style="width: 100%;" />
+    </div>
 
-        <MudDatePicker @bind-value="expedition.StartDate" Label="Start Date" Required="true" />
-        <MudDatePicker @bind-value="expedition.EndDate" Label="End Date" Required="true" />
+    <div class="form-group">
+        <RadzenLabel Text="Description" />
+        <RadzenTextBox @bind-Value="Shipment.Description"
+                       Placeholder="Enter a description"
+                       Style="width: 100%;" />
+    </div>
 
-        <MudTextField @bind-Value="expedition.Route.StartLocation" Label="Start Location" Required="true" Placeholder="Where will the expedition start?" />
-        <MudTextField @bind-Value="expedition.Route.EndLocation" Label="End Location" Required="true" Placeholder="Where will the expedition end?" />
-        <MudTextField @bind-Value="expedition.Route.Distance" Label="Distance (km)" Placeholder="Enter the distance in kilometers" />
+    <div class="form-group">
+        <RadzenLabel Text="Start Location" />
+        <RadzenTextBox @bind-Value="Shipment.OriginAddress.Address"
+                       Placeholder="Enter the starting point"
+                       Style="width: 100%;" />
+    </div>
 
-        <MudButton Variant="MudBlazor.Variant.Filled" Color="Color.Primary" OnClick="AddExpedition">Submit</MudButton>
-        <MudButton Variant="MudBlazor.Variant.Text" OnClick="Cancel">Cancel</MudButton>
-    </MudForm>
-</MudPaper>
+    <div class="form-group">
+        <RadzenLabel Text="End Location" />
+        <RadzenTextBox @bind-Value="Shipment.DestinationAddress.Address"
+                       Placeholder="Enter the destination"
+                       Style="width: 100%;" />
+    </div>
 
-@code {
-    private MudForm form;
-    private bool isValid;
-
-    private ExpeditionModel expedition = new ExpeditionModel
-        {
-            Route = new RouteModel()
-        };
-
-    private void AddExpedition()
-    {
-        if (isValid)
-        {
-            // Logic to handle expedition addition (e.g., send data to the API)
-        }
-    }
-
-    private void Cancel()
-    {
-        // Logic to handle cancellation (e.g., navigate away or clear the form)
-    }
-
-    public class ExpeditionModel
-    {
-        public string Vehicle { get; set; }
-        public string ExpeditionType { get; set; }
-        public string Description { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public RouteModel Route { get; set; }
-    }
-
-    public class RouteModel
-    {
-        public string StartLocation { get; set; }
-        public string EndLocation { get; set; }
-        public double Distance { get; set; }
-    }
-}
+    <RadzenButton ButtonType="ButtonType.Submit" Text="Add Expedition" Style="margin-top: 20px;" />
+</RadzenTemplateForm>

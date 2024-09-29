@@ -2,7 +2,7 @@ using Cotrucking.Domain.Enums;
 
 namespace Cotrucking.Domain.Models;
 
-public class TransporterModel
+public class DriverModel
 {
     public Guid Id { get; set; }
     public string Description { get; set; }
@@ -22,14 +22,14 @@ public class TransporterModel
     public virtual UserModel User { get; set; } = new UserModel();
 }
 
-public class TransporterSearch
+public class DriverSearch
 {
     public string? Name { get; set; }
     public Guid? CompanyId { get; set; }
 }
 
 
-public class TransporterResponse
+public class DriverResponse
 {
     public Guid Id { get; set; }
     public string Description { get; set; }
@@ -43,7 +43,7 @@ public class TransporterResponse
     public virtual UserResponse? User { get; set; }
 }
 
-public class TransporterInput
+public class DriverInput
 {
     public string? LicenseNumber { get; set; }
     public AvailabilityStatus? AvailabilityStatus { get; set; }
@@ -55,7 +55,7 @@ public class TransporterInput
     public UserInput? User { get; set; }
 }
 
-public class TransporterExport
+public class DriverExport
 {
     public string? LicenseNumber { get; set; }
     public AvailabilityStatus? AvailabilityStatus { get; set; }

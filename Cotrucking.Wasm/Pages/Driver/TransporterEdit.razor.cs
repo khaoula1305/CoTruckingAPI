@@ -6,14 +6,14 @@ using Radzen;
 
 namespace Cotrucking.Wasm.Pages;
 
-public class TransporterEditBase : ComponentBase
+public class DriverEditBase : ComponentBase
 {
     [Inject]
-    public ITransporterService TransporterService { get; set; }
+    public IDriverService DriverService { get; set; }
     [Inject]
     public NavigationManager _navigationManager { get; set; }
     [Inject]
-    public ILogger<TransporterEditBase> _logger { get; set; }
+    public ILogger<DriverEditBase> _logger { get; set; }
     [Inject]
     NotificationService NotificationService { get; set; }
 
@@ -21,7 +21,7 @@ public class TransporterEditBase : ComponentBase
     public Guid? Id { get; set; }
 
     public Dictionary<int, string> Titles = new Dictionary<int, string>();
-    public TransporterModel Transporter { get; set; } = new TransporterModel();
+    public DriverModel Driver { get; set; } = new DriverModel();
 
     protected override async Task OnInitializedAsync()
     {
@@ -36,18 +36,18 @@ public class TransporterEditBase : ComponentBase
         await base.SetParametersAsync(Parameters);
         if (Id != null)
         {
-            Transporter = await TransporterService.GetById(Endpoints.Transporters, Id ?? Guid.Empty);
+            Driver = await DriverService.GetById(Endpoints.Drivers, Id ?? Guid.Empty);
             StateHasChanged();
         }
     }
 
-    public void Submit(TransporterModel arg)
+    public void Submit(DriverModel arg)
     {
-        _logger.LogWarning("Create Transporter");
-        var tras = TransporterService.Insert(Endpoints.Transporters, Transporter).Result;
+        _logger.LogWarning("Create Driver");
+        var tras = DriverService.Insert(Endpoints.Drivers, Driver).Result;
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = "text" });
 
-        _navigationManager.NavigateTo("/Transporter");
+        _navigationManager.NavigateTo("/Driver");
     }
 
     public void Cancel()

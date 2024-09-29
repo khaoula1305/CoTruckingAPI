@@ -4,10 +4,8 @@ namespace Cotrucking.Infrastructure.Entities
 {
     public class ShipmentDataModel: BaseEntity
     {
-        public virtual CustomerDataModel? Customer {  get; set; } 
-        public Guid? CustomerId { get; set; }
-        public virtual TransporterDataModel? Transporter { get; set; } = new TransporterDataModel();
-        public Guid? TransporterId { get; set; }
+        public virtual DriverDataModel? Driver { get; set; } = new DriverDataModel();
+        public Guid? DriverId { get; set; }
         public virtual AddressDataModel OriginAddress { get; set; } = new AddressDataModel();
         public Guid OriginAddressId { get; set; }
         public virtual AddressDataModel? DestinationAddress { get; set; }   
@@ -17,5 +15,9 @@ namespace Cotrucking.Infrastructure.Entities
         public DateTime DateTimeOfShipment { get; set; }
         public TimeSpan Duration { get; set; }
         public string? Name { get; set; }
+        public string? ExpeditionType { get; set; } // GoodsTransport, PeopleTransport
+        //ToBeModified  should have many customers
+        public virtual CustomerDataModel? Customer { get; set; }
+        public Guid? CustomerId { get; set; }
     }
 }

@@ -8,14 +8,14 @@ namespace Cotrucking.Wasm.Pages.Account
     public class RegisterBase : ComponentBase
     {
         [Inject]
-        public ITransporterService TransporterService { get; set; }
+        public IDriverService DriverService { get; set; }
 
-        public TransporterModel employee = new TransporterModel();
+        public DriverModel employee = new DriverModel();
 
         public async Task OnSubmit()
         {
             // Save employee to the database
-            await SaveTransporterToDatabase(employee);
+            await SaveDriverToDatabase(employee);
         }
 
         protected async Task OnFileChange(Object args)
@@ -28,12 +28,12 @@ namespace Cotrucking.Wasm.Pages.Account
             }
         }
 
-        protected async Task SaveTransporterToDatabase(TransporterModel employee)
+        protected async Task SaveDriverToDatabase(DriverModel employee)
         {
             // Here you will add the logic to save the employee (transporter) to the database
             // This may involve calling a service that interacts with your database
 
-            await TransporterService.Insert(Endpoints.Transporters, employee);
+            await DriverService.Insert(Endpoints.Drivers, employee);
         }
 
 

@@ -10,6 +10,7 @@ public class UserDataModel : IdentityUser<Guid>
     public string? PersonalPhoneNumber { get; set; }
     public Guid RoleId { get; set; }
     public virtual RoleDataModel Role { get; set; } = new();
-    public virtual TransporterDataModel? Transporter { get; set; }
+    public virtual DriverDataModel? Driver { get; set; }
     public virtual CustomerDataModel? Customer { get; set; }
+    public virtual EmployeeDataModel? Employee { get; set; }
 }

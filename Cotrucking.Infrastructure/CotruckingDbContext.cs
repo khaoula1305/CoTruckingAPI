@@ -15,16 +15,18 @@ namespace Cotrucking.Infrastructure
         public DbSet<PageDataModel> Pages { get; set; }
         public DbSet<FunctionalityDataModel> Functionalities { get; set; }
         public DbSet<CompanyDataModel> Companies { get; set; }
-        public DbSet<TransporterDataModel> Transporters { get; set; }
+        public DbSet<DriverDataModel> Drivers { get; set; }
         public DbSet<AddressDataModel> Addresses { get; set; }
         public DbSet<CountryDataModel> Countries { get; set; }
         public DbSet<CityDataModel> Cities { get; set; }
-        public DbSet<VehicleDataModel> Vehicles { get; set; }
+        public DbSet<VehiculeDataModel> Vehicles { get; set; }
         public DbSet<ShipmentDataModel> Shipments { get; set; }
         public DbSet<AssignmentDataModel> Assignments { get; set; }
         public DbSet<RequestDataModel> Requests { get; set; }
         public DbSet<ApplicationDataModel> Applications { get; set; }
         public DbSet<RefreshTokenDataModel> RefreshTokens { get; set; }
+        public DbSet<EmployeeDataModel> Employees { get; set; }
+        public DbSet<RentalDataModel> Rentals { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -35,13 +37,15 @@ namespace Cotrucking.Infrastructure
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<UserDataModel>()
-                .HasOne(x => x.Transporter)
+                .HasOne(x => x.Driver)
                 .WithOne(x => x.User)
                 .OnDelete(DeleteBehavior.SetNull);
-            modelBuilder.Entity<TransporterDataModel>()
+
+
+            modelBuilder.Entity<DriverDataModel>()
                 .HasOne(x => x.User)
-                .WithOne(y => y.Transporter)
-                .HasForeignKey<TransporterDataModel>(y => y.UserId)
+                .WithOne(y => y.Driver)
+                .HasForeignKey<DriverDataModel>(y => y.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<CustomerDataModel>()

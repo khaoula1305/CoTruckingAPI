@@ -7,7 +7,8 @@
         public string? RegistrationNumber { get; set; }
         public virtual AddressDataModel? Address { get; set; }
         public Guid AddressId { get; set; }
-        public virtual ICollection<TransporterDataModel> Transporters { get; set; } = new List<TransporterDataModel>();
-        public virtual ICollection<VehicleDataModel> Vehicles { get; set; } = new List<VehicleDataModel>();
+        public virtual ICollection<DriverDataModel>? Drivers { get; set; }
+        public virtual ICollection<VehiculeDataModel>? Vehicules { get; set; }
+        public virtual ICollection<EmployeeDataModel>? Employees { get; set; }
     }
 }

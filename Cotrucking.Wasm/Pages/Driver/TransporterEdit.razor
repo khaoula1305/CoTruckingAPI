@@ -1,15 +1,15 @@
-﻿@page "/Transporter/Create"
+﻿@page "/Driver/Create"
 
-@inherits TransporterEditBase
+@inherits DriverEditBase
 
-@if (Transporter == null)
+@if (Driver == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
 
-    <RadzenTemplateForm Data="@Transporter" TItem="TransporterModel" Submit="@((TransporterModel args) => { Submit(args); })" @ref="form">
+    <RadzenTemplateForm Data="@Driver" TItem="DriverModel" Submit="@((DriverModel args) => { Submit(args); })" @ref="form">
         <!-- First Row - Registration information -->
         @if (isFirstRowVisible)
         {
@@ -25,18 +25,18 @@ else
                 </RadzenText>
 
                 <!-- Firstname Field -->
-                <RadzenTextBox @bind-Value="Transporter.User.Firstname" Name="FirstName" Style="width: 100%;" Placeholder="Firstname" />
+                <RadzenTextBox @bind-Value="Driver.User.Firstname" Name="FirstName" Style="width: 100%;" Placeholder="Firstname" />
                 <RadzenRequiredValidator Component="FirstName" Text="Firstname is required." />
 
                 <!-- Lastname Field -->
-                <RadzenTextBox @bind-Value="Transporter.User.Lastname" Name="LastName" Style="width: 100%;" Placeholder="Lastname" />
+                <RadzenTextBox @bind-Value="Driver.User.Lastname" Name="LastName" Style="width: 100%;" Placeholder="Lastname" />
                 <RadzenRequiredValidator Component="LastName" Text="Lastname is required." />
 
                 <!-- Email Field -->
-                <RadzenTextBox @bind-Value="Transporter.User.Email" Name="Email" Style="width: 100%;" Placeholder="Email"/>
+                <RadzenTextBox @bind-Value="Driver.User.Email" Name="Email" Style="width: 100%;" Placeholder="Email"/>
                 <RadzenRequiredValidator Component="Email" Text="Email is required." />
                 <RadzenEmailValidator Component="Email" Text="Provide a valid email address" Popup=@popup />
-                <RadzenCustomValidator Component="Email" Validator="@(() => ValidateNewEmail(Transporter.User.Email))" Text="Email already exists" Popup=@popup />
+                <RadzenCustomValidator Component="Email" Validator="@(() => ValidateNewEmail(Driver.User.Email))" Text="Email already exists" Popup=@popup />
 
                     <!-- Register Button -->
                         <RadzenButton Text="Register" Click="@Register" Icon="save" />
@@ -64,7 +64,7 @@ else
                                         <RadzenLabel Text="Title" Component="Title" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenDropDown @bind-Value="Transporter.User.Title" AllowClear="true" Placeholder="Select something" Data="@Titles"
+                                        <RadzenDropDown @bind-Value="Driver.User.Title" AllowClear="true" Placeholder="Select something" Data="@Titles"
                                                         Style="width: 100%;" TextProperty="Value" ValueProperty="Key" Name="Key"></RadzenDropDown>
                                     </RadzenColumn>
                                 </RadzenRow>
@@ -73,7 +73,7 @@ else
                                         <RadzenLabel Text="Firstname" Component="Firstname" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenTextBox Style="width: 100%;" Name="Firstname" @bind-Value="Transporter.User.Firstname" />
+                                        <RadzenTextBox Style="width: 100%;" Name="Firstname" @bind-Value="Driver.User.Firstname" />
                                     </RadzenColumn>
                                 </RadzenRow>
                                 <RadzenRow AlignItems="AlignItems.Center">
@@ -81,7 +81,7 @@ else
                                         <RadzenLabel Text="Lastname" Component="Lastname" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenTextBox Style="width: 100%;" Name="Lastname" @bind-Value="Transporter.User.Lastname" />
+                                        <RadzenTextBox Style="width: 100%;" Name="Lastname" @bind-Value="Driver.User.Lastname" />
                                     </RadzenColumn>
                                 </RadzenRow>
                                 <RadzenRow AlignItems="AlignItems.Center">
@@ -89,7 +89,7 @@ else
                                         <RadzenLabel Text="Email" Component="Email" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="Transporter.User.Email" />
+                                        <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="Driver.User.Email" />
                                     </RadzenColumn>
                                 </RadzenRow>
                                 <RadzenRow AlignItems="AlignItems.Center">
@@ -97,7 +97,7 @@ else
                                         <RadzenLabel Text="Personal phone number" Component="PersonalPhoneNumber" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenTextBox Style="width: 100%;" Name="PersonalPhoneNumber" @bind-Value="Transporter.User.PersonalPhoneNumber" />
+                                        <RadzenTextBox Style="width: 100%;" Name="PersonalPhoneNumber" @bind-Value="Driver.User.PersonalPhoneNumber" />
                                     </RadzenColumn>
                                 </RadzenRow>
                             </RadzenStack>
@@ -164,7 +164,7 @@ else
                                         <RadzenLabel Text="Hire Date" Component="HireDate" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenDatePicker Style="width: 100%;" Name="HireDate" @bind-Value="Transporter.HireDate" />
+                                        <RadzenDatePicker Style="width: 100%;" Name="HireDate" @bind-Value="Driver.HireDate" />
                                     </RadzenColumn>
                                 </RadzenRow>
                                 <RadzenRow AlignItems="AlignItems.Center">
@@ -172,7 +172,7 @@ else
                                         <RadzenLabel Text="Role" Component="Role" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenTextBox Style="width: 100%;" Name="Role" @bind-Value="Transporter.JobRole" />
+                                        <RadzenTextBox Style="width: 100%;" Name="Role" @bind-Value="Driver.JobRole" />
                                     </RadzenColumn>
                                 </RadzenRow>
                                 <RadzenRow AlignItems="AlignItems.Center">
@@ -180,7 +180,7 @@ else
                                         <RadzenLabel Text="Description" Component="Description" />
                                     </RadzenColumn>
                                     <RadzenColumn Size="12" SizeMD="8">
-                                        <RadzenTextBox Style="width: 100%;" Name="Description" @bind-Value="Transporter.Description" />
+                                        <RadzenTextBox Style="width: 100%;" Name="Description" @bind-Value="Driver.Description" />
                                     </RadzenColumn>
                                 </RadzenRow>
                             </RadzenStack>
@@ -239,7 +239,7 @@ else
 
 @code {
     private bool isFirstRowVisible = true; // Controls the visibility of the first row
-    private RadzenTemplateForm<TransporterModel> form;
+    private RadzenTemplateForm<DriverModel> form;
     public bool popup= false;
     public bool ValidateNewEmail(string email)
     {
