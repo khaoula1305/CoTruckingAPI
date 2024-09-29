@@ -1,5 +1,62 @@
-﻿<h3>ShipmentEdit</h3>
+﻿@page "/shipement/create"
+@using MudBlazor
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h5">Add a New Expedition</MudText>
+
+    <MudForm @ref="form" Valid="isValid">
+        <MudTextField @bind-Value="expedition.Vehicle" Label="Vehicle" Required="true" Placeholder="Select vehicle" />
+        <MudTextField @bind-Value="expedition.ExpeditionType" Label="Expedition Type" Required="true" Placeholder="Goods Transport / People Transport" />
+        <MudTextField @bind-Value="expedition.Description" Label="Description" Required="true" Placeholder="Short description of the expedition" />
+
+        <MudDatePicker @bind-value="expedition.StartDate" Label="Start Date" Required="true" />
+        <MudDatePicker @bind-value="expedition.EndDate" Label="End Date" Required="true" />
+
+        <MudTextField @bind-Value="expedition.Route.StartLocation" Label="Start Location" Required="true" Placeholder="Where will the expedition start?" />
+        <MudTextField @bind-Value="expedition.Route.EndLocation" Label="End Location" Required="true" Placeholder="Where will the expedition end?" />
+        <MudTextField @bind-Value="expedition.Route.Distance" Label="Distance (km)" Placeholder="Enter the distance in kilometers" />
+
+        <MudButton Variant="MudBlazor.Variant.Filled" Color="Color.Primary" OnClick="AddExpedition">Submit</MudButton>
+        <MudButton Variant="MudBlazor.Variant.Text" OnClick="Cancel">Cancel</MudButton>
+    </MudForm>
+</MudPaper>
 
 @code {
+    private MudForm form;
+    private bool isValid;
 
+    private ExpeditionModel expedition = new ExpeditionModel
+        {
+            Route = new RouteModel()
+        };
+
+    private void AddExpedition()
+    {
+        if (isValid)
+        {
+            // Logic to handle expedition addition (e.g., send data to the API)
+        }
+    }
+
+    private void Cancel()
+    {
+        // Logic to handle cancellation (e.g., navigate away or clear the form)
+    }
+
+    public class ExpeditionModel
+    {
+        public string Vehicle { get; set; }
+        public string ExpeditionType { get; set; }
+        public string Description { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public RouteModel Route { get; set; }
+    }
+
+    public class RouteModel
+    {
+        public string StartLocation { get; set; }
+        public string EndLocation { get; set; }
+        public double Distance { get; set; }
+    }
 }

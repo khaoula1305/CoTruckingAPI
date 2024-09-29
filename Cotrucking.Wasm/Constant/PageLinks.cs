@@ -8,5 +8,7 @@
         public const string Rental = "/Rental";
         public const string Company = "/Company";
         public const string CompanyCreate = $"{Company}/Create";
+        public const string Login = "/Login";
+        public const string Register = "/Register";
     }
 }

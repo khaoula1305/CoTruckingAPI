@@ -1,40 +1,42 @@
 ﻿@page "/register"
 @inherits RegisterBase
+@inject ILogger<Login> Logger
+@inject NavigationManager NavigationManager
 
 <RadzenTemplateForm TItem="TransporterModel" Submit="@OnSubmit" Data="@employee">
-    <RadzenRow>
-        <RadzenLabel Text="First Name" />
-        <RadzenTextBox @bind-Value="employee.FirstName" Name="FirstName" />
-        <RadzenRequiredValidator Component="FirstName" Text="First name is required" />
+        <RadzenRow>
+            <RadzenLabel Text="First Name" />
+            <RadzenTextBox @bind-Value="employee.FirstName" Name="FirstName" />
+            <RadzenRequiredValidator Component="FirstName" Text="First name is required" />
 
-        <div class="col-md-6">
-            <RadzenLabel Text="Last Name" />
-            <RadzenTextBox @bind-Value="employee.LastName" Name="LastName" />
-            <RadzenRequiredValidator Component="LastName" Text="Last name is required" />
-        </div>
+            <div class="col-md-6">
+                <RadzenLabel Text="Last Name" />
+                <RadzenTextBox @bind-Value="employee.LastName" Name="LastName" />
+                <RadzenRequiredValidator Component="LastName" Text="Last name is required" />
+            </div>
 
-        <div class="col-md-6">
-            <RadzenLabel Text="Job Role" />
-            <RadzenTextBox @bind-Value="employee.JobRole" Name="JobRole" />
-        </div>
+            <div class="col-md-6">
+                <RadzenLabel Text="Job Role" />
+                <RadzenTextBox @bind-Value="employee.JobRole" Name="JobRole" />
+            </div>
 
-        <div class="col-md-6">
-            <RadzenLabel Text="Description" />
-            <RadzenTextArea @bind-Value="employee.Description" Name="Description" />
-        </div>
+            <div class="col-md-6">
+                <RadzenLabel Text="Description" />
+                <RadzenTextArea @bind-Value="employee.Description" Name="Description" />
+            </div>
 
-        <div class="col-md-6">
-            <RadzenLabel Text="Salary" />
-            <RadzenNumeric @bind-Value="employee.Salary" Name="Salary" />
-        </div>
+            <div class="col-md-6">
+                <RadzenLabel Text="Salary" />
+                <RadzenNumeric @bind-Value="employee.Salary" Name="Salary" />
+            </div>
 
-        <div class="col-md-6">
-            <RadzenLabel Text="Photo" />
-            @* <RadzenFileInput Change="@OnFileChange" /> *@
-        </div>
+            <div class="col-md-6">
+                <RadzenLabel Text="Photo" />
+@*                <RadzenFileInput Change="@OnFileChange" />
+ *@            </div>
 
-        <div class="col-md-12">
-            <RadzenButton Text="Submit" ButtonType="ButtonType.Submit" />
-        </div>
-    </RadzenRow>
-</RadzenTemplateForm>
+            <div class="col-md-12">
+                <RadzenButton Text="Submit" ButtonType="ButtonType.Submit" />
+            </div>
+        </RadzenRow>
+    </RadzenTemplateForm>
